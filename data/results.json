@@ -1,0 +1,82 @@
+{
+  "lastUpdated": "2026-07-02",
+  "stage": "Round of 32",
+  "source": {
+    "name": "Economic Times and Guardian live reports",
+    "url": "https://m.economictimes.com/news/new-updates/fifa-world-cup-2026-who-won-yesterday-latest-match-results-and-whos-into-the-round-of-16/articleshow/132128073.cms"
+  },
+  "matches": [
+    {
+      "date": "2026-07-02",
+      "stage": "Round of 32",
+      "winner": "Mexico",
+      "scoreline": "2-0",
+      "teams": [
+        {
+          "name": "Mexico",
+          "flag": "mx",
+          "score": 2
+        },
+        {
+          "name": "Ecuador",
+          "flag": "ec",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-07-02",
+      "stage": "Round of 32",
+      "winner": "England",
+      "scoreline": "2-1",
+      "teams": [
+        {
+          "name": "England",
+          "flag": "gb-eng",
+          "score": 2
+        },
+        {
+          "name": "DR Congo",
+          "flag": "cd",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-02",
+      "stage": "Round of 32",
+      "winner": "Belgium",
+      "scoreline": "3-2",
+      "teams": [
+        {
+          "name": "Belgium",
+          "flag": "be",
+          "score": 3
+        },
+        {
+          "name": "Senegal",
+          "flag": "sn",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "date": "2026-07-02",
+      "stage": "Round of 32",
+      "winner": "United States",
+      "scoreline": "2-0",
+      "teams": [
+        {
+          "name": "United States",
+          "flag": "us",
+          "score": 2
+        },
+        {
+          "name": "Bosnia and Herzegovina",
+          "flag": "ba",
+          "score": 0
+        }
+      ]
+    }
+  ]
+}
