@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Taylor Gang Sports Hub | World Cup 2026</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar" aria-label="Primary">
+        <a class="brand-mark" href="#top" aria-label="Taylor Gang Sports Hub home">
+          <span class="logo-image" aria-hidden="true"></span>
+          <span>Taylor Gang Sports Hub</span>
+        </a>
+        <div class="nav-actions">
+          <a href="#winners">Latest Winners</a>
+          <a href="#leaderboard">Leaderboard</a>
+          <a href="#picked-teams">Who Picked Who</a>
+          <a href="#picks">Picks</a>
+        </div>
+      </nav>
+      <div class="hero-grid" id="top">
+        <section class="hero-copy">
+          <p class="eyebrow">Taylor Gang Sports Hub</p>
+          <h1>World Cup 2026 Pool</h1>
+          <p>The official Taylor Gang battle board for picks, points, champions, and fresh World Cup winners.</p>
+          <div class="hero-actions" aria-label="Page shortcuts">
+            <a class="button-link" href="#leaderboard">View Standings</a>
+            <a class="button-link secondary" href="#winners">Latest Results</a>
+          </div>
+        </section>
+        <section class="hero-badge" aria-label="Taylor Gang Sports Hub logo">
+          <span class="hero-logo-image" aria-hidden="true"></span>
+        </section>
+        <section class="podium" aria-label="Current leaderboard" id="podium"></section>
+      </div>
+    </header>
+
+    <main>
+      <section class="status-band" aria-label="Tournament status">
+        <div><span class="label">Last checked</span><strong id="lastUpdated">Loading...</strong></div>
+        <div><span class="label">Hub status</span><strong id="stageName">World Cup 2026</strong></div>
+        <div><span class="label">Results source</span><strong><a id="sourceLink" href="#" target="_blank" rel="noreferrer">Results feed</a></strong></div>
+      </section>
+
+      <section class="section" id="winners">
+        <div class="section-head">
+          <div><p class="eyebrow">Fresh from the pitch</p><h2>Latest winners</h2></div>
+          <button id="refreshButton" type="button" aria-label="Refresh page data">Refresh</button>
+        </div>
+        <div class="match-grid" id="matchGrid"></div>
+      </section>
+
+      <section class="section alt" id="leaderboard">
+        <div class="section-head"><div><p class="eyebrow">Taylor Gang standings</p><h2>Leaderboard</h2></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Rank</th><th>Player</th><th>Total</th><th>Groups</th><th>Round of 32</th><th>Champion pick</th></tr></thead><tbody id="leaderboardRows"></tbody></table></div>
+      </section>
+
+      <section class="section" id="picked-teams">
+        <div class="section-head">
+          <div><p class="eyebrow">Who backed who</p><h2>Picked teams</h2></div>
+        </div>
+        <div class="pick-summary">
+          <article class="pick-panel">
+            <div class="panel-title">
+              <span class="label">Tournament winner</span>
+              <strong>Champion picks</strong>
+            </div>
+            <div class="team-pick-grid" id="championPickGrid"></div>
+          </article>
+          <article class="pick-panel">
+            <div class="panel-title">
+              <span class="label">Knockout calls</span>
+              <strong>Round of 32 picks</strong>
+            </div>
+            <div class="team-pick-grid" id="teamPickGrid"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="picks">
+        <div class="section-head"><div><p class="eyebrow">The bracket room</p><h2>Round of 32 picks</h2></div></div>
+        <div class="fixture-grid" id="fixtureGrid"></div>
+      </section>
+    </main>
+
+    <footer>Taylor Gang Sports Hub. Hockey sticks, golf clubs, football dreams, and World Cup bragging rights.</footer>
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
