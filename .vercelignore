@@ -1,0 +1,9 @@
+.github
+*.xlsx
+*.xls
+.env
+.env.*
+node_modules
+preview-*.png
+work
+outputs
