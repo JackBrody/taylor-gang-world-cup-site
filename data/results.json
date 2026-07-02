@@ -1,79 +1,61 @@
 {
   "lastUpdated": "2026-07-02",
-  "stage": "Round of 32",
+  "stage": "FIFA World Cup",
   "source": {
-    "name": "Economic Times and Guardian live reports",
-    "url": "https://m.economictimes.com/news/new-updates/fifa-world-cup-2026-who-won-yesterday-latest-match-results-and-whos-into-the-round-of-16/articleshow/132128073.cms"
+    "name": "ESPN scoreboard API",
+    "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
   },
   "matches": [
     {
       "date": "2026-07-02",
-      "stage": "Round of 32",
-      "winner": "Mexico",
-      "scoreline": "2-0",
+      "stage": "round-of-32",
+      "winner": "Spain",
+      "scoreline": "3-0",
       "teams": [
         {
-          "name": "Mexico",
-          "flag": "mx",
-          "score": 2
+          "name": "Spain",
+          "flag": "sp",
+          "score": 3
         },
         {
-          "name": "Ecuador",
-          "flag": "ec",
+          "name": "Austria",
+          "flag": "au",
           "score": 0
         }
       ]
     },
     {
       "date": "2026-07-02",
-      "stage": "Round of 32",
-      "winner": "England",
-      "scoreline": "2-1",
+      "stage": "round-of-32",
+      "winner": "Portugal",
+      "scoreline": "0-0",
       "teams": [
         {
-          "name": "England",
-          "flag": "gb-eng",
-          "score": 2
+          "name": "Portugal",
+          "flag": "po",
+          "score": 0
         },
         {
-          "name": "DR Congo",
-          "flag": "cd",
-          "score": 1
+          "name": "Croatia",
+          "flag": "cr",
+          "score": 0
         }
       ]
     },
     {
-      "date": "2026-07-02",
-      "stage": "Round of 32",
-      "winner": "Belgium",
-      "scoreline": "3-2",
+      "date": "2026-07-03",
+      "stage": "round-of-32",
+      "winner": "Switzerland",
+      "scoreline": "0-0",
       "teams": [
         {
-          "name": "Belgium",
-          "flag": "be",
-          "score": 3
+          "name": "Switzerland",
+          "flag": "sw",
+          "score": 0
         },
         {
-          "name": "Senegal",
-          "flag": "sn",
-          "score": 2
-        }
-      ]
-    },
-    {
-      "date": "2026-07-02",
-      "stage": "Round of 32",
-      "winner": "United States",
-      "scoreline": "2-0",
-      "teams": [
-        {
-          "name": "United States",
-          "flag": "us",
-          "score": 2
-        },
-        {
-          "name": "Bosnia and Herzegovina",
-          "flag": "ba",
+          "name": "Algeria",
+          "flag": "al",
           "score": 0
         }
       ]
