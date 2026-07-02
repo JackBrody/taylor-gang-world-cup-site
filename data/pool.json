@@ -1,0 +1,627 @@
+{
+  "generatedFrom": "Taylor Gang World Cup 2026.xlsx",
+  "players": [
+    "Cory",
+    "Meghan",
+    "Poppy",
+    "Kris",
+    "Wade",
+    "Sean",
+    "Emma",
+    "Mila"
+  ],
+  "leaderboard": [
+    {
+      "name": "Sean",
+      "groupPoints": 38,
+      "roundOf32Points": 14,
+      "total": 52,
+      "champion": "Spain"
+    },
+    {
+      "name": "Kris",
+      "groupPoints": 38,
+      "roundOf32Points": 12,
+      "total": 50,
+      "champion": "France"
+    },
+    {
+      "name": "Cory",
+      "groupPoints": 36,
+      "roundOf32Points": 12,
+      "total": 48,
+      "champion": "Spain"
+    },
+    {
+      "name": "Wade",
+      "groupPoints": 36,
+      "roundOf32Points": 12,
+      "total": 48,
+      "champion": "France"
+    },
+    {
+      "name": "Poppy",
+      "groupPoints": 34,
+      "roundOf32Points": 12,
+      "total": 46,
+      "champion": "France"
+    },
+    {
+      "name": "Mila",
+      "groupPoints": 29,
+      "roundOf32Points": 14,
+      "total": 43,
+      "champion": "Canada"
+    },
+    {
+      "name": "Emma",
+      "groupPoints": 23,
+      "roundOf32Points": 14,
+      "total": 37,
+      "champion": "Brazil"
+    },
+    {
+      "name": "Meghan",
+      "groupPoints": 25,
+      "roundOf32Points": 12,
+      "total": 37,
+      "champion": "Spain"
+    }
+  ],
+  "groupPicks": [
+    {
+      "slot": "A-1",
+      "picks": {
+        "Cory": "Mexico",
+        "Meghan": "Mexico",
+        "Poppy": "Mexico",
+        "Kris": "Mexico",
+        "Wade": "Mexico",
+        "Sean": "Mexico",
+        "Emma": "Korea",
+        "Mila": "Mexico"
+      }
+    },
+    {
+      "slot": "A-2",
+      "picks": {
+        "Cory": "Korea",
+        "Meghan": "Czechia",
+        "Poppy": "Korea",
+        "Kris": "Korea",
+        "Wade": "South Africa",
+        "Sean": "Korea Republic",
+        "Emma": "Mexico",
+        "Mila": "South Africa"
+      }
+    },
+    {
+      "slot": "B-1",
+      "picks": {
+        "Cory": "Switzerland",
+        "Meghan": "Canada",
+        "Poppy": "Canada",
+        "Kris": "Switzerland",
+        "Wade": "Canada",
+        "Sean": "Switzerland",
+        "Emma": "Canada",
+        "Mila": "Canada"
+      }
+    },
+    {
+      "slot": "B-2",
+      "picks": {
+        "Cory": "Canada",
+        "Meghan": "Qatar",
+        "Poppy": "Switzerland",
+        "Kris": "Canada",
+        "Wade": "Switzerland",
+        "Sean": "Canada",
+        "Emma": "Switzerland",
+        "Mila": "Switzerland"
+      }
+    },
+    {
+      "slot": "C-1",
+      "picks": {
+        "Cory": "Brazil",
+        "Meghan": "Brazil",
+        "Poppy": "Brazil",
+        "Kris": "Brazil",
+        "Wade": "Brazil",
+        "Sean": "Brazil",
+        "Emma": "Brazil",
+        "Mila": "Brazil"
+      }
+    },
+    {
+      "slot": "C-2",
+      "picks": {
+        "Cory": "Morocco",
+        "Meghan": "Haiti",
+        "Poppy": "Morocco",
+        "Kris": "Morocco",
+        "Wade": "Morocco",
+        "Sean": "Morocco",
+        "Emma": "Morocco",
+        "Mila": "Morocco"
+      }
+    },
+    {
+      "slot": "D-1",
+      "picks": {
+        "Cory": "USA",
+        "Meghan": "Paraguay",
+        "Poppy": "USA",
+        "Kris": "USA",
+        "Wade": "USA",
+        "Sean": "USA",
+        "Emma": "Australia",
+        "Mila": "USA"
+      }
+    },
+    {
+      "slot": "D-2",
+      "picks": {
+        "Cory": "Paraguay",
+        "Meghan": "Türkiye",
+        "Poppy": "Australia",
+        "Kris": "Türkiye",
+        "Wade": "Australia",
+        "Sean": "Türkiye",
+        "Emma": "Turkey",
+        "Mila": "Paraguay"
+      }
+    },
+    {
+      "slot": "E-1",
+      "picks": {
+        "Cory": "Germany",
+        "Meghan": "Germany",
+        "Poppy": "Germany",
+        "Kris": "Germany",
+        "Wade": "Germany",
+        "Sean": "Germany",
+        "Emma": "Germany",
+        "Mila": "Germany"
+      }
+    },
+    {
+      "slot": "E-2",
+      "picks": {
+        "Cory": "Ecuador",
+        "Meghan": "Ecuador",
+        "Poppy": "Côte d'Ivoire",
+        "Kris": "Ecuador",
+        "Wade": "Ecuador",
+        "Sean": "Ecuador",
+        "Emma": "Curaçao",
+        "Mila": "Ecuador"
+      }
+    },
+    {
+      "slot": "F-1",
+      "picks": {
+        "Cory": "Netherlands",
+        "Meghan": "Netherlands",
+        "Poppy": "Netherlands",
+        "Kris": "Netherlands",
+        "Wade": "Netherlands",
+        "Sean": "Netherlands",
+        "Emma": "Japan",
+        "Mila": "Sweden"
+      }
+    },
+    {
+      "slot": "F-2",
+      "picks": {
+        "Cory": "Japan",
+        "Meghan": "Tunisia",
+        "Poppy": "Sweden",
+        "Kris": "Japan",
+        "Wade": "Sweden",
+        "Sean": "Japan",
+        "Emma": "Sweden",
+        "Mila": "Netherlands"
+      }
+    },
+    {
+      "slot": "G-1",
+      "picks": {
+        "Cory": "Belgium",
+        "Meghan": "Belgium",
+        "Poppy": "Belgium",
+        "Kris": "Belgium",
+        "Wade": "Belgium",
+        "Sean": "Belgium",
+        "Emma": "New Zealand",
+        "Mila": "Belgium"
+      }
+    },
+    {
+      "slot": "G-2",
+      "picks": {
+        "Cory": "Egypt",
+        "Meghan": "Egypt",
+        "Poppy": "New Zealand",
+        "Kris": "Egypt",
+        "Wade": "Egypt",
+        "Sean": "Egypt",
+        "Emma": "Iran",
+        "Mila": "New Zealand"
+      }
+    },
+    {
+      "slot": "H-1",
+      "picks": {
+        "Cory": "Spain",
+        "Meghan": "Spain",
+        "Poppy": "Spain",
+        "Kris": "Spain",
+        "Wade": "Spain",
+        "Sean": "Spain",
+        "Emma": "Spain",
+        "Mila": "Spain"
+      }
+    },
+    {
+      "slot": "H-2",
+      "picks": {
+        "Cory": "Uruguay",
+        "Meghan": "Uruguay",
+        "Poppy": "Uruguay",
+        "Kris": "Uruguay",
+        "Wade": "Uruguay",
+        "Sean": "Uruguay",
+        "Emma": "Uruguay",
+        "Mila": "Uruguay"
+      }
+    },
+    {
+      "slot": "I-1",
+      "picks": {
+        "Cory": "France",
+        "Meghan": "France",
+        "Poppy": "France",
+        "Kris": "France",
+        "Wade": "France",
+        "Sean": "France",
+        "Emma": "France",
+        "Mila": "France"
+      }
+    },
+    {
+      "slot": "I-2",
+      "picks": {
+        "Cory": "Senegal",
+        "Meghan": "Senegal",
+        "Poppy": "Norway",
+        "Kris": "Norway",
+        "Wade": "Senegal",
+        "Sean": "Norway",
+        "Emma": "Norway",
+        "Mila": "Senegal"
+      }
+    },
+    {
+      "slot": "J-1",
+      "picks": {
+        "Cory": "Argentina",
+        "Meghan": "Argentina",
+        "Poppy": "Argentina",
+        "Kris": "Argentina",
+        "Wade": "Argentina",
+        "Sean": "Argentina",
+        "Emma": "Argentina",
+        "Mila": "Argentina"
+      }
+    },
+    {
+      "slot": "J-2",
+      "picks": {
+        "Cory": "Austria",
+        "Meghan": "Algeria",
+        "Poppy": "Austria",
+        "Kris": "Austria",
+        "Wade": "Austria",
+        "Sean": "Austria",
+        "Emma": "Algeria",
+        "Mila": "Austria"
+      }
+    },
+    {
+      "slot": "K-1",
+      "picks": {
+        "Cory": "Portugal",
+        "Meghan": "Portugal",
+        "Poppy": "Portugal",
+        "Kris": "Portugal",
+        "Wade": "Portugal",
+        "Sean": "Portugal",
+        "Emma": "Portugal",
+        "Mila": "Portugal"
+      }
+    },
+    {
+      "slot": "K-2",
+      "picks": {
+        "Cory": "Colombia",
+        "Meghan": "Colombia",
+        "Poppy": "Colombia",
+        "Kris": "Colombia",
+        "Wade": "Colombia",
+        "Sean": "Colombia",
+        "Emma": "Colombia",
+        "Mila": "Colombia"
+      }
+    },
+    {
+      "slot": "L-1",
+      "picks": {
+        "Cory": "England",
+        "Meghan": "England",
+        "Poppy": "England",
+        "Kris": "England",
+        "Wade": "England",
+        "Sean": "England",
+        "Emma": "England",
+        "Mila": "England"
+      }
+    },
+    {
+      "slot": "L-2",
+      "picks": {
+        "Cory": "Croatia",
+        "Meghan": "Croatia",
+        "Poppy": "Panama",
+        "Kris": "Croatia",
+        "Wade": "Croatia",
+        "Sean": "Croatia",
+        "Emma": "Panama",
+        "Mila": "Ghana"
+      }
+    }
+  ],
+  "roundOf32Picks": [
+    {
+      "match": "South Africa vs Canada",
+      "home": "South Africa",
+      "away": "Canada",
+      "picks": {
+        "Cory": "Canada",
+        "Meghan": "Canada",
+        "Poppy": "Canada",
+        "Kris": "Canada",
+        "Wade": "Canada",
+        "Sean": "Canada",
+        "Emma": "Canada",
+        "Mila": "Canada"
+      }
+    },
+    {
+      "match": "Brazil vs Japan",
+      "home": "Brazil",
+      "away": "Japan",
+      "picks": {
+        "Cory": "Brazil",
+        "Meghan": "Brazil",
+        "Poppy": "Brazil",
+        "Kris": "Brazil",
+        "Wade": "Brazil",
+        "Sean": "Brazil",
+        "Emma": "Brazil",
+        "Mila": "Brazil"
+      }
+    },
+    {
+      "match": "Germany vs Paraguay",
+      "home": "Germany",
+      "away": "Paraguay",
+      "picks": {
+        "Cory": "Germany",
+        "Meghan": "Germany",
+        "Poppy": "Germany",
+        "Kris": "Germany",
+        "Wade": "Germany",
+        "Sean": "Germany",
+        "Emma": "Paraguay",
+        "Mila": "Germany"
+      }
+    },
+    {
+      "match": "Netherlands vs Morocco",
+      "home": "Netherlands",
+      "away": "Morocco",
+      "picks": {
+        "Cory": "Netherlands",
+        "Meghan": "Morocco",
+        "Poppy": "Netherlands",
+        "Kris": "Netherlands",
+        "Wade": "Netherlands",
+        "Sean": "Netherlands",
+        "Emma": "Morocco",
+        "Mila": "Netherlands"
+      }
+    },
+    {
+      "match": "Côte d’Ivoire vs Norway",
+      "home": "Côte d’Ivoire",
+      "away": "Norway",
+      "picks": {
+        "Cory": "Norway",
+        "Meghan": "Côte d’Ivoire",
+        "Poppy": "Côte d’Ivoire",
+        "Kris": "Norway",
+        "Wade": "Norway",
+        "Sean": "Norway",
+        "Emma": "Côte d’Ivoire",
+        "Mila": "Côte d’Ivoire"
+      }
+    },
+    {
+      "match": "France vs Sweden",
+      "home": "France",
+      "away": "Sweden",
+      "picks": {
+        "Cory": "France",
+        "Meghan": "Sweden",
+        "Poppy": "France",
+        "Kris": "France",
+        "Wade": "France",
+        "Sean": "France",
+        "Emma": "Sweden",
+        "Mila": "France"
+      }
+    },
+    {
+      "match": "Mexico vs Ecuador",
+      "home": "Mexico",
+      "away": "Ecuador",
+      "picks": {
+        "Cory": "Mexico",
+        "Meghan": "Mexico",
+        "Poppy": "Mexico",
+        "Kris": "Mexico",
+        "Wade": "Mexico",
+        "Sean": "Mexico",
+        "Emma": "Mexico",
+        "Mila": "Mexico"
+      }
+    },
+    {
+      "match": "England vs DR Congo",
+      "home": "England",
+      "away": "DR Congo",
+      "picks": {
+        "Cory": "England",
+        "Meghan": "England",
+        "Poppy": "England",
+        "Kris": "England",
+        "Wade": "England",
+        "Sean": "England",
+        "Emma": "England",
+        "Mila": "England"
+      }
+    },
+    {
+      "match": "Belgium vs Senegal",
+      "home": "Belgium",
+      "away": "Senegal",
+      "picks": {
+        "Cory": "Senegal",
+        "Meghan": "Senegal",
+        "Poppy": "Senegal",
+        "Kris": "Senegal",
+        "Wade": "Senegal",
+        "Sean": "Belgium",
+        "Emma": "Belgium",
+        "Mila": "Belgium"
+      }
+    },
+    {
+      "match": "USA vs Bosnia and Herzegovina",
+      "home": "USA",
+      "away": "Bosnia and Herzegovina",
+      "picks": {
+        "Cory": "USA",
+        "Meghan": "USA",
+        "Poppy": "USA",
+        "Kris": "USA",
+        "Wade": "USA",
+        "Sean": "USA",
+        "Emma": "Bosnia",
+        "Mila": "USA"
+      }
+    },
+    {
+      "match": "Spain vs Austria",
+      "home": "Spain",
+      "away": "Austria",
+      "picks": {
+        "Cory": "Spain",
+        "Meghan": "Spain",
+        "Poppy": "Spain",
+        "Kris": "Spain",
+        "Wade": "Spain",
+        "Sean": "Spain",
+        "Emma": "Spain",
+        "Mila": "Spain"
+      }
+    },
+    {
+      "match": "Portugal vs Croatia",
+      "home": "Portugal",
+      "away": "Croatia",
+      "picks": {
+        "Cory": "Portugal",
+        "Meghan": "Portugal",
+        "Poppy": "Portugal",
+        "Kris": "Croatia",
+        "Wade": "Croatia",
+        "Sean": "Portugal",
+        "Emma": "Portugal",
+        "Mila": "Portugal"
+      }
+    },
+    {
+      "match": "Switzerland vs Algeria",
+      "home": "Switzerland",
+      "away": "Algeria",
+      "picks": {
+        "Cory": "Switzerland",
+        "Meghan": "Algeria",
+        "Poppy": "Switzerland",
+        "Kris": "Switzerland",
+        "Wade": "Switzerland",
+        "Sean": "Switzerland",
+        "Emma": "Switzerland",
+        "Mila": "Switzerland"
+      }
+    },
+    {
+      "match": "Australia vs Egypt",
+      "home": "Australia",
+      "away": "Egypt",
+      "picks": {
+        "Cory": "Egypt",
+        "Meghan": "Australia",
+        "Poppy": "Egypt",
+        "Kris": "Egypt",
+        "Wade": "Egypt",
+        "Sean": "Egypt",
+        "Emma": "Australia",
+        "Mila": "Australia"
+      }
+    },
+    {
+      "match": "Argentina vs Cabo Verde",
+      "home": "Argentina",
+      "away": "Cabo Verde",
+      "picks": {
+        "Cory": "Argentina",
+        "Meghan": "Argentina",
+        "Poppy": "Argentina",
+        "Kris": "Argentina",
+        "Wade": "Argentina",
+        "Sean": "Argentina",
+        "Emma": "Argentina",
+        "Mila": "Argentina"
+      }
+    },
+    {
+      "match": "Colombia vs Ghana",
+      "home": "Colombia",
+      "away": "Ghana",
+      "picks": {
+        "Cory": "Colombia",
+        "Meghan": "Colombia",
+        "Poppy": "Colombia",
+        "Kris": "Colombia",
+        "Wade": "Ghana",
+        "Sean": "Colombia",
+        "Emma": "Colombia",
+        "Mila": "Colombia"
+      }
+    }
+  ]
+}
