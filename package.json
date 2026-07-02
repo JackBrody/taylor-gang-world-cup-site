@@ -1,0 +1,13 @@
+{
+  "name": "taylor-gang-world-cup-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-check.mjs",
+    "update-results": "node scripts/update-results.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
