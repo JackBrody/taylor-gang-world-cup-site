@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02",
+  "lastUpdated": "2026-07-03",
   "stage": "FIFA World Cup",
   "source": {
     "name": "ESPN scoreboard API",
@@ -28,17 +28,17 @@
       "date": "2026-07-02",
       "stage": "round-of-32",
       "winner": "Portugal",
-      "scoreline": "0-0",
+      "scoreline": "2-1",
       "teams": [
         {
           "name": "Portugal",
           "flag": "po",
-          "score": 0
+          "score": 2
         },
         {
           "name": "Croatia",
           "flag": "cr",
-          "score": 0
+          "score": 1
         }
       ]
     },
