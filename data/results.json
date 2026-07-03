@@ -9,18 +9,18 @@
     {
       "date": "2026-07-03",
       "stage": "round-of-32",
-      "winner": "Egypt",
-      "scoreline": "1-0",
+      "winner": "Australia",
+      "scoreline": "1-1",
       "teams": [
+        {
+          "name": "Australia",
+          "flag": "au",
+          "score": 1
+        },
         {
           "name": "Egypt",
           "flag": "eg",
           "score": 1
-        },
-        {
-          "name": "Australia",
-          "flag": "au",
-          "score": 0
         }
       ]
     },
