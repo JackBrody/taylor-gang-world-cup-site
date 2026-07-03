@@ -14,8 +14,15 @@
     {
       "name": "Sean",
       "groupPoints": 38,
+      "roundOf32Points": 16,
+      "total": 54,
+      "champion": "Spain"
+    },
+    {
+      "name": "Cory",
+      "groupPoints": 36,
       "roundOf32Points": 14,
-      "total": 52,
+      "total": 50,
       "champion": "Spain"
     },
     {
@@ -26,11 +33,11 @@
       "champion": "France"
     },
     {
-      "name": "Cory",
-      "groupPoints": 36,
-      "roundOf32Points": 12,
+      "name": "Poppy",
+      "groupPoints": 34,
+      "roundOf32Points": 14,
       "total": 48,
-      "champion": "Spain"
+      "champion": "France"
     },
     {
       "name": "Wade",
@@ -40,31 +47,24 @@
       "champion": "France"
     },
     {
-      "name": "Poppy",
-      "groupPoints": 34,
-      "roundOf32Points": 12,
-      "total": 46,
-      "champion": "France"
-    },
-    {
       "name": "Mila",
       "groupPoints": 29,
-      "roundOf32Points": 14,
-      "total": 43,
+      "roundOf32Points": 16,
+      "total": 45,
       "champion": "Canada"
     },
     {
       "name": "Emma",
       "groupPoints": 23,
-      "roundOf32Points": 14,
-      "total": 37,
+      "roundOf32Points": 16,
+      "total": 39,
       "champion": "Brazil"
     },
     {
       "name": "Meghan",
       "groupPoints": 25,
-      "roundOf32Points": 12,
-      "total": 37,
+      "roundOf32Points": 14,
+      "total": 39,
       "champion": "Spain"
     }
   ],
