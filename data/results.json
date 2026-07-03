@@ -7,55 +7,55 @@
   },
   "matches": [
     {
-      "date": "2026-07-02",
+      "date": "2026-07-03",
       "stage": "round-of-32",
-      "winner": "Spain",
-      "scoreline": "3-0",
+      "winner": "Australia",
+      "scoreline": "0-0",
       "teams": [
         {
-          "name": "Spain",
-          "flag": "sp",
-          "score": 3
-        },
-        {
-          "name": "Austria",
+          "name": "Australia",
           "flag": "au",
           "score": 0
-        }
-      ]
-    },
-    {
-      "date": "2026-07-02",
-      "stage": "round-of-32",
-      "winner": "Portugal",
-      "scoreline": "2-1",
-      "teams": [
-        {
-          "name": "Portugal",
-          "flag": "po",
-          "score": 2
         },
         {
-          "name": "Croatia",
-          "flag": "cr",
-          "score": 1
+          "name": "Egypt",
+          "flag": "eg",
+          "score": 0
         }
       ]
     },
     {
       "date": "2026-07-03",
       "stage": "round-of-32",
-      "winner": "Switzerland",
-      "scoreline": "2-0",
+      "winner": "Argentina",
+      "scoreline": "0-0",
       "teams": [
         {
-          "name": "Switzerland",
-          "flag": "sw",
-          "score": 2
+          "name": "Argentina",
+          "flag": "ar",
+          "score": 0
         },
         {
-          "name": "Algeria",
-          "flag": "al",
+          "name": "Cape Verde",
+          "flag": "ca",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-07-04",
+      "stage": "round-of-32",
+      "winner": "Colombia",
+      "scoreline": "0-0",
+      "teams": [
+        {
+          "name": "Colombia",
+          "flag": "co",
+          "score": 0
+        },
+        {
+          "name": "Ghana",
+          "flag": "gh",
           "score": 0
         }
       ]
