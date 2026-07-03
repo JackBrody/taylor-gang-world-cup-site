@@ -8,8 +8,8 @@
   "matches": [
     {
       "date": "2026-07-03",
-      "stage": "round-of-32",
-      "winner": "Australia",
+      "stage": "Egypt advance 4-2 on penalties",
+      "winner": "Egypt",
       "scoreline": "1-1",
       "teams": [
         {
@@ -28,12 +28,12 @@
       "date": "2026-07-03",
       "stage": "round-of-32",
       "winner": "Argentina",
-      "scoreline": "0-0",
+      "scoreline": "1-0",
       "teams": [
         {
           "name": "Argentina",
           "flag": "ar",
-          "score": 0
+          "score": 1
         },
         {
           "name": "Cape Verde",
