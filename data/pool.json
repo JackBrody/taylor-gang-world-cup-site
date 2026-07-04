@@ -14,57 +14,57 @@
     {
       "name": "Sean",
       "groupPoints": 38,
-      "roundOf32Points": 20,
-      "total": 58,
+      "roundOf32Points": 26,
+      "total": 64,
       "champion": "Spain"
     },
     {
       "name": "Kris",
       "groupPoints": 38,
-      "roundOf32Points": 16,
-      "total": 54,
+      "roundOf32Points": 22,
+      "total": 60,
       "champion": "France"
     },
     {
       "name": "Cory",
       "groupPoints": 36,
-      "roundOf32Points": 18,
-      "total": 54,
+      "roundOf32Points": 24,
+      "total": 60,
       "champion": "Spain"
     },
     {
       "name": "Wade",
       "groupPoints": 36,
-      "roundOf32Points": 16,
-      "total": 52,
+      "roundOf32Points": 22,
+      "total": 58,
       "champion": "France"
     },
     {
       "name": "Poppy",
       "groupPoints": 34,
-      "roundOf32Points": 18,
-      "total": 52,
+      "roundOf32Points": 22,
+      "total": 56,
       "champion": "France"
     },
     {
       "name": "Mila",
       "groupPoints": 29,
-      "roundOf32Points": 18,
-      "total": 47,
+      "roundOf32Points": 22,
+      "total": 51,
       "champion": "Canada"
     },
     {
       "name": "Emma",
       "groupPoints": 23,
-      "roundOf32Points": 18,
-      "total": 41,
+      "roundOf32Points": 22,
+      "total": 45,
       "champion": "Brazil"
     },
     {
       "name": "Meghan",
       "groupPoints": 25,
-      "roundOf32Points": 14,
-      "total": 39,
+      "roundOf32Points": 18,
+      "total": 43,
       "champion": "Spain"
     }
   ],
@@ -622,6 +622,103 @@
         "Emma": "Colombia",
         "Mila": "Colombia"
       }
+    }
+  ],
+  "roundOf16Picks": [
+    {
+      "name": "Cory",
+      "picks": [
+        "Canada",
+        "France",
+        "Brazil",
+        "England",
+        "Spain",
+        "USA",
+        "Argentina",
+        "Colombia"
+      ]
+    },
+    {
+      "name": "Meghan",
+      "picks": [
+        "France",
+        "France",
+        "Brazil",
+        "England",
+        "Portugal",
+        "USA",
+        "Argentina",
+        "Colombia"
+      ]
+    },
+    {
+      "name": "Poppy",
+      "picks": [
+        "Morocco",
+        "France",
+        "Norway",
+        "Mexico",
+        "Portugal",
+        "USA",
+        "Argentina",
+        "Colombia"
+      ]
+    },
+    {
+      "name": "Kris",
+      "picks": []
+    },
+    {
+      "name": "Wade",
+      "picks": [
+        "Morocco",
+        "France",
+        "Brazil",
+        "England",
+        "Spain",
+        "USA",
+        "Argentina",
+        "Colombia"
+      ]
+    },
+    {
+      "name": "Sean",
+      "picks": [
+        "Morocco",
+        "France",
+        "Brazil",
+        "England",
+        "Spain",
+        "Belgium",
+        "Argentina",
+        "Colombia"
+      ]
+    },
+    {
+      "name": "Emma",
+      "picks": [
+        "Canada",
+        "France",
+        "Norway",
+        "England",
+        "Portugal",
+        "USA",
+        "Argentina",
+        "Switzerland"
+      ]
+    },
+    {
+      "name": "Mila",
+      "picks": [
+        "Canada",
+        "France",
+        "Brazil",
+        "England",
+        "Spain",
+        "Belgium",
+        "Argentina",
+        "Colombia"
+      ]
     }
   ]
 }
