@@ -3,41 +3,95 @@
   "stage": "Round of 32",
   "source": {
     "name": "The Guardian match reports and manual pool update",
-    "url": "https://www.theguardian.com/football/2026/jul/03/fifa-world-cup-2026-live-switzerland-v-algeria-updates-sui-vs-alg-last-round-32-match-score-latest"
+    "url": "https://www.theguardian.com/football/2026/jul/03/australia-egypt-world-cup-2026-last-32-match-report"
   },
   "matches": [
     {
-      "date": "2026-07-03",
-      "stage": "round-of-32",
-      "winner": "Argentina",
-      "scoreline": "1-0",
+      "date": "2026-07-02",
+      "stage": "Round of 32",
+      "winner": "Mexico",
+      "scoreline": "2-0",
       "teams": [
         {
-          "name": "Argentina",
-          "flag": "ar",
-          "score": 1
+          "name": "Mexico",
+          "flag": "mx",
+          "score": 2
         },
         {
-          "name": "Cape Verde",
-          "flag": "ca",
+          "name": "Ecuador",
+          "flag": "ec",
           "score": 0
         }
       ]
     },
     {
-      "date": "2026-07-03",
+      "date": "2026-07-02",
       "stage": "Round of 32",
-      "winner": "Egypt",
-      "scoreline": "1-1 (4-2 pens)",
+      "winner": "England",
+      "scoreline": "2-1",
       "teams": [
         {
-          "name": "Australia",
-          "flag": "au",
-          "score": 1
+          "name": "England",
+          "flag": "gb-eng",
+          "score": 2
         },
         {
-          "name": "Egypt",
-          "flag": "eg",
+          "name": "DR Congo",
+          "flag": "cd",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-07-02",
+      "stage": "Round of 32",
+      "winner": "Belgium",
+      "scoreline": "3-2",
+      "teams": [
+        {
+          "name": "Belgium",
+          "flag": "be",
+          "score": 3
+        },
+        {
+          "name": "Senegal",
+          "flag": "sn",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "date": "2026-07-02",
+      "stage": "Round of 32",
+      "winner": "United States",
+      "scoreline": "2-0",
+      "teams": [
+        {
+          "name": "United States",
+          "flag": "us",
+          "score": 2
+        },
+        {
+          "name": "Bosnia and Herzegovina",
+          "flag": "ba",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-07-02",
+      "stage": "Round of 32",
+      "winner": "Portugal",
+      "scoreline": "2-1",
+      "teams": [
+        {
+          "name": "Portugal",
+          "flag": "pt",
+          "score": 2
+        },
+        {
+          "name": "Croatia",
+          "flag": "hr",
           "score": 1
         }
       ]
@@ -61,20 +115,20 @@
       ]
     },
     {
-      "date": "2026-07-04",
-      "stage": "round-of-32",
-      "winner": "Colombia",
-      "scoreline": "0-0",
+      "date": "2026-07-03",
+      "stage": "Round of 32",
+      "winner": "Egypt",
+      "scoreline": "1-1 (4-2 pens)",
       "teams": [
         {
-          "name": "Colombia",
-          "flag": "co",
-          "score": 0
+          "name": "Australia",
+          "flag": "au",
+          "score": "1 (2p)"
         },
         {
-          "name": "Ghana",
-          "flag": "gh",
-          "score": 0
+          "name": "Egypt",
+          "flag": "eg",
+          "score": "1 (4p)"
         }
       ]
     }
