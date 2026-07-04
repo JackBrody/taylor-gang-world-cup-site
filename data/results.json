@@ -7,55 +7,37 @@
   },
   "matches": [
     {
-      "date": "2026-07-03",
-      "stage": "Egypt advance 4-2 on penalties",
-      "winner": "Egypt",
-      "scoreline": "1-1",
+      "date": "2026-07-04",
+      "stage": "round-of-16",
+      "winner": "Canada",
+      "scoreline": "0-0",
       "teams": [
         {
-          "name": "Australia",
-          "flag": "au",
-          "score": 1
-        },
-        {
-          "name": "Egypt",
-          "flag": "eg",
-          "score": 1
-        }
-      ]
-    },
-    {
-      "date": "2026-07-03",
-      "stage": "round-of-32",
-      "winner": "Argentina",
-      "scoreline": "3-2",
-      "teams": [
-        {
-          "name": "Argentina",
-          "flag": "ar",
-          "score": 3
-        },
-        {
-          "name": "Cape Verde",
+          "name": "Canada",
           "flag": "ca",
-          "score": 2
+          "score": 0
+        },
+        {
+          "name": "Morocco",
+          "flag": "mo",
+          "score": 0
         }
       ]
     },
     {
       "date": "2026-07-04",
-      "stage": "round-of-32",
-      "winner": "Colombia",
-      "scoreline": "1-0",
+      "stage": "round-of-16",
+      "winner": "Paraguay",
+      "scoreline": "0-0",
       "teams": [
         {
-          "name": "Colombia",
-          "flag": "co",
-          "score": 1
+          "name": "Paraguay",
+          "flag": "pa",
+          "score": 0
         },
         {
-          "name": "Ghana",
-          "flag": "gh",
+          "name": "France",
+          "flag": "fr",
           "score": 0
         }
       ]
