@@ -39,12 +39,8 @@ function parseCsv(text) {
     } else if (character === ',' && !inQuotes) {
       row.push(field.trim());
       field = '';
-    } else if ((character === '
-' || character === '
-') && !inQuotes) {
-      if (character === '
-' && next === '
-') index += 1;
+    } else if ((character === '\n' || character === '\r') && !inQuotes) {
+      if (character === '\r' && next === '\n') index += 1;
       row.push(field.trim());
       rows.push(row);
       row = [];
