@@ -1,7 +1,5 @@
 name: Update World Cup Results
 on:
-  schedule:
-    - cron: '20 * * * *'
   workflow_dispatch:
 permissions:
   contents: write
