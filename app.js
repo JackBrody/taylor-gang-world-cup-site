@@ -123,11 +123,19 @@ async function loadPool() {
     const leaderboard = players.map((name, index) => {
       const groupPoints = numberCell(groupTotal[index + 1]);
       const roundOf32Points = numberCell(roundOf32Total[index + 1]);
+      const roundOf16Points = 0;
+      const quarterfinalPoints = 0;
+      const semifinalPoints = 0;
+      const finalPoints = 0;
       return {
         name,
         groupPoints,
         roundOf32Points,
-        total: groupPoints + roundOf32Points,
+        roundOf16Points,
+        quarterfinalPoints,
+        semifinalPoints,
+        finalPoints,
+        total: groupPoints + roundOf32Points + roundOf16Points + quarterfinalPoints + semifinalPoints + finalPoints,
         champion: cleanTeam(championRow[index + 1])
       };
     }).sort((a, b) => b.total - a.total || b.groupPoints - a.groupPoints || a.name.localeCompare(b.name));
@@ -169,7 +177,7 @@ function matchCard(match) {
 }
 
 function leaderboardRow(row, index) {
-  return '<tr><td><span class="rank">' + (index + 1) + '</span></td><td><strong>' + row.name + '</strong></td><td><strong>' + row.total + '</strong></td><td>' + row.groupPoints + '</td><td>' + row.roundOf32Points + '</td><td><span class="pill">' + row.champion + '</span></td></tr>';
+  return '<tr><td><span class="rank">' + (index + 1) + '</span></td><td><strong>' + row.name + '</strong></td><td><strong>' + row.total + '</strong></td><td>' + row.groupPoints + '</td><td>' + row.roundOf32Points + '</td><td>' + (row.roundOf16Points || 0) + '</td><td>' + (row.quarterfinalPoints || 0) + '</td><td>' + (row.semifinalPoints || 0) + '</td><td>' + (row.finalPoints || 0) + '</td><td><span class="pill">' + row.champion + '</span></td></tr>';
 }
 
 function podiumCard(row, index) {
@@ -183,11 +191,13 @@ function roundOf16Card(player) {
 }
 
 async function render({ manual = false } = {}) {
-  const updateButton = document.querySelector('#updateButton');
+  const updateButtons = Array.from(document.querySelectorAll('.update-button'));
 
-  if (manual && updateButton) {
-    updateButton.disabled = true;
-    updateButton.textContent = 'UPDATING...';
+  if (manual) {
+    updateButtons.forEach((button) => {
+      button.disabled = true;
+      button.textContent = 'UPDATING...';
+    });
   }
 
   try {
@@ -201,14 +211,18 @@ async function render({ manual = false } = {}) {
     document.querySelector('#leaderboardRows').innerHTML = pool.leaderboard.map(leaderboardRow).join('');
     document.querySelector('#fixtureGrid').innerHTML = (pool.roundOf16Picks || []).map(roundOf16Card).join('');
   } finally {
-    if (manual && updateButton) {
-      updateButton.disabled = false;
-      updateButton.textContent = 'UPDATE';
+    if (manual) {
+      updateButtons.forEach((button) => {
+        button.disabled = false;
+        button.textContent = 'UPDATE';
+      });
     }
   }
 }
 
-document.querySelector('#updateButton').addEventListener('click', () => render({ manual: true }));
+document.querySelectorAll('.update-button').forEach((button) => {
+  button.addEventListener('click', () => render({ manual: true }));
+});
 render().catch((error) => {
   document.querySelector('#matchGrid').innerHTML = '<p>' + error.message + '</p>';
 });
