@@ -182,19 +182,33 @@ function roundOf16Card(player) {
   return '<article class="fixture-card"><div class="fixture-top"><span>Round of 16</span><span>' + player.name + '</span></div><div class="pick-list">' + body + '</div></article>';
 }
 
-async function render() {
-  const [results, pool] = await Promise.all([loadJson('./data/results.json'), loadPool()]);
-  document.querySelector('#lastUpdated').textContent = results.lastUpdated;
-  document.querySelector('#stageName').textContent = results.stage;
-  document.querySelector('#sourceLink').href = results.source.url;
-  document.querySelector('#sourceLink').textContent = results.source.name;
-  document.querySelector('#podium').innerHTML = pool.leaderboard.slice(0, 3).map(podiumCard).join('');
-  document.querySelector('#matchGrid').innerHTML = results.matches.map(matchCard).join('');
-  document.querySelector('#leaderboardRows').innerHTML = pool.leaderboard.map(leaderboardRow).join('');
-  document.querySelector('#fixtureGrid').innerHTML = (pool.roundOf16Picks || []).map(roundOf16Card).join('');
+async function render({ manual = false } = {}) {
+  const updateButton = document.querySelector('#updateButton');
+
+  if (manual && updateButton) {
+    updateButton.disabled = true;
+    updateButton.textContent = 'UPDATING...';
+  }
+
+  try {
+    const [results, pool] = await Promise.all([loadJson('./data/results.json'), loadPool()]);
+    document.querySelector('#lastUpdated').textContent = results.lastUpdated;
+    document.querySelector('#stageName').textContent = results.stage;
+    document.querySelector('#sourceLink').href = results.source.url;
+    document.querySelector('#sourceLink').textContent = results.source.name;
+    document.querySelector('#podium').innerHTML = pool.leaderboard.slice(0, 3).map(podiumCard).join('');
+    document.querySelector('#matchGrid').innerHTML = results.matches.map(matchCard).join('');
+    document.querySelector('#leaderboardRows').innerHTML = pool.leaderboard.map(leaderboardRow).join('');
+    document.querySelector('#fixtureGrid').innerHTML = (pool.roundOf16Picks || []).map(roundOf16Card).join('');
+  } finally {
+    if (manual && updateButton) {
+      updateButton.disabled = false;
+      updateButton.textContent = 'UPDATE';
+    }
+  }
 }
 
-document.querySelector('#refreshButton').addEventListener('click', render);
+document.querySelector('#updateButton').addEventListener('click', () => render({ manual: true }));
 render().catch((error) => {
   document.querySelector('#matchGrid').innerHTML = '<p>' + error.message + '</p>';
 });
