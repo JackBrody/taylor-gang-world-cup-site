@@ -77,6 +77,17 @@ function cleanTeam(team) {
     .trim();
 }
 
+function canonicalTeam(team) {
+  const cleaned = cleanTeam(team).toLowerCase().replace(/[^a-z0-9]/g, '');
+  const aliases = {
+    usa: 'unitedstates',
+    us: 'unitedstates',
+    unitedstatesofamerica: 'unitedstates',
+    coteivoire: 'cotedivoire'
+  };
+  return aliases[cleaned] || cleaned;
+}
+
 function playersFromHeader(row) {
   return row.slice(1, 9).filter(Boolean);
 }
@@ -176,6 +187,44 @@ function matchCard(match) {
   return '<article class="match-card"><div class="match-top"><span>' + match.date + '</span><span>' + match.stage + '</span></div><p class="scoreline">' + match.scoreline + '</p>' + teamLine(match.teams[0], match.winner) + teamLine(match.teams[1], match.winner) + '</article>';
 }
 
+function winnersByStage(results, stageName) {
+  return (results.matches || [])
+    .filter((match) => String(match.stage || '').toLowerCase() === stageName.toLowerCase())
+    .map((match) => match.winner)
+    .filter(Boolean);
+}
+
+function pointsForWinners(picks, winners) {
+  const canonicalPicks = new Set((picks || []).map(canonicalTeam));
+  return winners.reduce((points, winner) => points + (canonicalPicks.has(canonicalTeam(winner)) ? 2 : 0), 0);
+}
+
+function scorePool(pool, results) {
+  const roundOf16Winners = winnersByStage(results, 'Round of 16');
+  const quarterfinalWinners = winnersByStage(results, 'Quarterfinals');
+  const semifinalWinners = winnersByStage(results, 'Semi-finals');
+  const finalWinners = winnersByStage(results, 'Finals');
+  const roundOf16ByPlayer = new Map((pool.roundOf16Picks || []).map((player) => [player.name, player.picks || []]));
+
+  const leaderboard = (pool.leaderboard || []).map((row) => {
+    const roundOf16Points = pointsForWinners(roundOf16ByPlayer.get(row.name), roundOf16Winners);
+    const quarterfinalPoints = pointsForWinners([], quarterfinalWinners);
+    const semifinalPoints = pointsForWinners([], semifinalWinners);
+    const finalPoints = pointsForWinners([], finalWinners);
+
+    return {
+      ...row,
+      roundOf16Points,
+      quarterfinalPoints,
+      semifinalPoints,
+      finalPoints,
+      total: row.groupPoints + row.roundOf32Points + roundOf16Points + quarterfinalPoints + semifinalPoints + finalPoints
+    };
+  }).sort((a, b) => b.total - a.total || b.groupPoints - a.groupPoints || a.name.localeCompare(b.name));
+
+  return { ...pool, leaderboard };
+}
+
 function leaderboardRow(row, index) {
   return '<tr><td><span class="rank">' + (index + 1) + '</span></td><td><strong>' + row.name + '</strong></td><td><strong>' + row.total + '</strong></td><td>' + row.groupPoints + '</td><td>' + row.roundOf32Points + '</td><td>' + (row.roundOf16Points || 0) + '</td><td>' + (row.quarterfinalPoints || 0) + '</td><td>' + (row.semifinalPoints || 0) + '</td><td>' + (row.finalPoints || 0) + '</td><td><span class="pill">' + row.champion + '</span></td></tr>';
 }
@@ -187,7 +236,7 @@ function podiumCard(row, index) {
 function roundOf16Card(player) {
   const chips = (player.picks || []).map((team) => '<span class="pick-chip"><strong>' + cleanTeam(team) + '</strong></span>').join('');
   const body = chips || '<span class="pick-chip"><strong>Not submitted</strong></span>';
-  return '<article class="fixture-card"><div class="fixture-top"><span>Round of 16</span><span>' + player.name + '</span></div><div class="pick-list">' + body + '</div></article>';
+  return '<article class="fixture-card"><div class="fixture-top"><span>Picks</span><span>' + player.name + '</span></div><div class="pick-list">' + body + '</div></article>';
 }
 
 async function render({ manual = false } = {}) {
@@ -201,7 +250,8 @@ async function render({ manual = false } = {}) {
   }
 
   try {
-    const [results, pool] = await Promise.all([loadJson('./data/results.json'), loadPool()]);
+    const [results, rawPool] = await Promise.all([loadJson('./data/results.json'), loadPool()]);
+    const pool = scorePool(rawPool, results);
     document.querySelector('#lastUpdated').textContent = results.lastUpdated;
     document.querySelector('#stageName').textContent = results.stage;
     document.querySelector('#sourceLink').href = results.source.url;
