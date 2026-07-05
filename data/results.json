@@ -1,9 +1,9 @@
 {
   "lastUpdated": "2026-07-04",
-  "stage": "Round of 16 set",
+  "stage": "Round of 16",
   "source": {
     "name": "SBNation and Guardian match reports",
-    "url": "https://www.sbnation.com/soccer/1120771/world-cup-schedule-scores-round-32"
+    "url": "https://www.sbnation.com/soccer/1121525/2026-world-cup-round-of-16-scores-schedule"
   },
   "matches": [
     {
@@ -12,16 +12,8 @@
       "winner": "Canada",
       "scoreline": "1-0",
       "teams": [
-        {
-          "name": "South Africa",
-          "flag": "za",
-          "score": 0
-        },
-        {
-          "name": "Canada",
-          "flag": "ca",
-          "score": 1
-        }
+        { "name": "South Africa", "flag": "za", "score": 0 },
+        { "name": "Canada", "flag": "ca", "score": 1 }
       ]
     },
     {
@@ -30,16 +22,8 @@
       "winner": "Brazil",
       "scoreline": "2-1",
       "teams": [
-        {
-          "name": "Brazil",
-          "flag": "br",
-          "score": 2
-        },
-        {
-          "name": "Japan",
-          "flag": "jp",
-          "score": 1
-        }
+        { "name": "Brazil", "flag": "br", "score": 2 },
+        { "name": "Japan", "flag": "jp", "score": 1 }
       ]
     },
     {
@@ -48,16 +32,8 @@
       "winner": "Paraguay",
       "scoreline": "1-1 (4-3 pens)",
       "teams": [
-        {
-          "name": "Germany",
-          "flag": "de",
-          "score": "1 (3p)"
-        },
-        {
-          "name": "Paraguay",
-          "flag": "py",
-          "score": "1 (4p)"
-        }
+        { "name": "Germany", "flag": "de", "score": "1 (3p)" },
+        { "name": "Paraguay", "flag": "py", "score": "1 (4p)" }
       ]
     },
     {
@@ -66,16 +42,8 @@
       "winner": "Morocco",
       "scoreline": "1-1 (3-2 pens)",
       "teams": [
-        {
-          "name": "Netherlands",
-          "flag": "nl",
-          "score": "1 (2p)"
-        },
-        {
-          "name": "Morocco",
-          "flag": "ma",
-          "score": "1 (3p)"
-        }
+        { "name": "Netherlands", "flag": "nl", "score": "1 (2p)" },
+        { "name": "Morocco", "flag": "ma", "score": "1 (3p)" }
       ]
     },
     {
@@ -84,16 +52,8 @@
       "winner": "Norway",
       "scoreline": "2-1",
       "teams": [
-        {
-          "name": "Cote d'Ivoire",
-          "flag": "ci",
-          "score": 1
-        },
-        {
-          "name": "Norway",
-          "flag": "no",
-          "score": 2
-        }
+        { "name": "Cote d'Ivoire", "flag": "ci", "score": 1 },
+        { "name": "Norway", "flag": "no", "score": 2 }
       ]
     },
     {
@@ -102,16 +62,8 @@
       "winner": "France",
       "scoreline": "3-0",
       "teams": [
-        {
-          "name": "France",
-          "flag": "fr",
-          "score": 3
-        },
-        {
-          "name": "Sweden",
-          "flag": "se",
-          "score": 0
-        }
+        { "name": "France", "flag": "fr", "score": 3 },
+        { "name": "Sweden", "flag": "se", "score": 0 }
       ]
     },
     {
@@ -120,16 +72,8 @@
       "winner": "Mexico",
       "scoreline": "2-0",
       "teams": [
-        {
-          "name": "Mexico",
-          "flag": "mx",
-          "score": 2
-        },
-        {
-          "name": "Ecuador",
-          "flag": "ec",
-          "score": 0
-        }
+        { "name": "Mexico", "flag": "mx", "score": 2 },
+        { "name": "Ecuador", "flag": "ec", "score": 0 }
       ]
     },
     {
@@ -138,16 +82,8 @@
       "winner": "England",
       "scoreline": "2-1",
       "teams": [
-        {
-          "name": "England",
-          "flag": "gb-eng",
-          "score": 2
-        },
-        {
-          "name": "DR Congo",
-          "flag": "cd",
-          "score": 1
-        }
+        { "name": "England", "flag": "gb-eng", "score": 2 },
+        { "name": "DR Congo", "flag": "cd", "score": 1 }
       ]
     },
     {
@@ -156,16 +92,8 @@
       "winner": "Belgium",
       "scoreline": "3-2",
       "teams": [
-        {
-          "name": "Belgium",
-          "flag": "be",
-          "score": 3
-        },
-        {
-          "name": "Senegal",
-          "flag": "sn",
-          "score": 2
-        }
+        { "name": "Belgium", "flag": "be", "score": 3 },
+        { "name": "Senegal", "flag": "sn", "score": 2 }
       ]
     },
     {
@@ -174,16 +102,8 @@
       "winner": "United States",
       "scoreline": "2-0",
       "teams": [
-        {
-          "name": "United States",
-          "flag": "us",
-          "score": 2
-        },
-        {
-          "name": "Bosnia and Herzegovina",
-          "flag": "ba",
-          "score": 0
-        }
+        { "name": "United States", "flag": "us", "score": 2 },
+        { "name": "Bosnia and Herzegovina", "flag": "ba", "score": 0 }
       ]
     },
     {
@@ -192,16 +112,8 @@
       "winner": "Spain",
       "scoreline": "3-0",
       "teams": [
-        {
-          "name": "Spain",
-          "flag": "es",
-          "score": 3
-        },
-        {
-          "name": "Austria",
-          "flag": "at",
-          "score": 0
-        }
+        { "name": "Spain", "flag": "es", "score": 3 },
+        { "name": "Austria", "flag": "at", "score": 0 }
       ]
     },
     {
@@ -210,16 +122,8 @@
       "winner": "Portugal",
       "scoreline": "2-1",
       "teams": [
-        {
-          "name": "Portugal",
-          "flag": "pt",
-          "score": 2
-        },
-        {
-          "name": "Croatia",
-          "flag": "hr",
-          "score": 1
-        }
+        { "name": "Portugal", "flag": "pt", "score": 2 },
+        { "name": "Croatia", "flag": "hr", "score": 1 }
       ]
     },
     {
@@ -228,16 +132,8 @@
       "winner": "Switzerland",
       "scoreline": "2-0",
       "teams": [
-        {
-          "name": "Switzerland",
-          "flag": "ch",
-          "score": 2
-        },
-        {
-          "name": "Algeria",
-          "flag": "dz",
-          "score": 0
-        }
+        { "name": "Switzerland", "flag": "ch", "score": 2 },
+        { "name": "Algeria", "flag": "dz", "score": 0 }
       ]
     },
     {
@@ -246,16 +142,8 @@
       "winner": "Egypt",
       "scoreline": "1-1 (4-2 pens)",
       "teams": [
-        {
-          "name": "Australia",
-          "flag": "au",
-          "score": "1 (2p)"
-        },
-        {
-          "name": "Egypt",
-          "flag": "eg",
-          "score": "1 (4p)"
-        }
+        { "name": "Australia", "flag": "au", "score": "1 (2p)" },
+        { "name": "Egypt", "flag": "eg", "score": "1 (4p)" }
       ]
     },
     {
@@ -264,16 +152,8 @@
       "winner": "Argentina",
       "scoreline": "3-2 aet",
       "teams": [
-        {
-          "name": "Argentina",
-          "flag": "ar",
-          "score": 3
-        },
-        {
-          "name": "Cape Verde",
-          "flag": "cv",
-          "score": 2
-        }
+        { "name": "Argentina", "flag": "ar", "score": 3 },
+        { "name": "Cape Verde", "flag": "cv", "score": 2 }
       ]
     },
     {
@@ -282,16 +162,28 @@
       "winner": "Colombia",
       "scoreline": "1-0",
       "teams": [
-        {
-          "name": "Colombia",
-          "flag": "co",
-          "score": 1
-        },
-        {
-          "name": "Ghana",
-          "flag": "gh",
-          "score": 0
-        }
+        { "name": "Colombia", "flag": "co", "score": 1 },
+        { "name": "Ghana", "flag": "gh", "score": 0 }
+      ]
+    },
+    {
+      "date": "2026-07-04",
+      "stage": "Round of 16",
+      "winner": "Morocco",
+      "scoreline": "3-0",
+      "teams": [
+        { "name": "Canada", "flag": "ca", "score": 0 },
+        { "name": "Morocco", "flag": "ma", "score": 3 }
+      ]
+    },
+    {
+      "date": "2026-07-04",
+      "stage": "Round of 16",
+      "winner": "France",
+      "scoreline": "1-0",
+      "teams": [
+        { "name": "France", "flag": "fr", "score": 1 },
+        { "name": "Paraguay", "flag": "py", "score": 0 }
       ]
     }
   ]
