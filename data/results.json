@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-07-04",
+  "lastUpdated": "2026-07-06",
   "stage": "Round of 16",
   "source": {
-    "name": "SBNation and Guardian match reports",
+    "name": "SB Nation Round of 16 tracker",
     "url": "https://www.sbnation.com/soccer/1121525/2026-world-cup-round-of-16-scores-schedule"
   },
   "matches": [
@@ -184,6 +184,36 @@
       "teams": [
         { "name": "France", "flag": "fr", "score": 1 },
         { "name": "Paraguay", "flag": "py", "score": 0 }
+      ]
+    },
+    {
+      "date": "2026-07-05",
+      "stage": "Round of 16",
+      "winner": "Norway",
+      "scoreline": "2-1",
+      "teams": [
+        { "name": "Brazil", "flag": "br", "score": 1 },
+        { "name": "Norway", "flag": "no", "score": 2 }
+      ]
+    },
+    {
+      "date": "2026-07-05",
+      "stage": "Round of 16",
+      "winner": "England",
+      "scoreline": "3-2",
+      "teams": [
+        { "name": "Mexico", "flag": "mx", "score": 2 },
+        { "name": "England", "flag": "gb-eng", "score": 3 }
+      ]
+    },
+    {
+      "date": "2026-07-06",
+      "stage": "Round of 16",
+      "winner": "Spain",
+      "scoreline": "1-0",
+      "teams": [
+        { "name": "Spain", "flag": "es", "score": 1 },
+        { "name": "Portugal", "flag": "pt", "score": 0 }
       ]
     }
   ]
