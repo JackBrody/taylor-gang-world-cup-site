@@ -68,6 +68,39 @@
         font-weight: 800;
       }
 
+      .watch-panel {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: center;
+        border: 1px solid rgba(255, 214, 128, 0.32);
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, rgba(218, 170, 73, 0.2), rgba(255, 255, 255, 0.06)),
+          rgba(0, 0, 0, 0.22);
+        padding: 20px;
+      }
+
+      .watch-panel p {
+        margin: 6px 0 0;
+        color: var(--muted);
+      }
+
+      .watch-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border-radius: 6px;
+        color: #070707;
+        background: var(--gold);
+        font-weight: 900;
+        text-decoration: none;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
       @media (max-width: 980px) {
         .bracket-grid {
           grid-template-columns: repeat(2, minmax(220px, 1fr));
@@ -77,6 +110,14 @@
       @media (max-width: 620px) {
         .bracket-grid {
           grid-template-columns: 1fr;
+        }
+
+        .watch-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .watch-link {
+          width: 100%;
         }
       }
     </style>
@@ -90,6 +131,7 @@
         </a>
         <div class="nav-actions">
           <a href="#winners">Latest Winners</a>
+          <a href="#watch">Watch Live</a>
           <a href="#leaderboard">Leaderboard</a>
           <a href="#bracket">Bracket</a>
           <a href="#picks">Round of 16 Picks</a>
@@ -117,6 +159,17 @@
         <div><span class="label">Last checked</span><strong id="lastUpdated">Loading...</strong></div>
         <div><span class="label">Hub status</span><strong id="stageName">World Cup 2026</strong></div>
         <div><span class="label">Results source</span><strong><a id="sourceLink" href="#" target="_blank" rel="noreferrer">Results feed</a></strong></div>
+      </section>
+
+      <section class="section" id="watch">
+        <div class="section-head"><div><p class="eyebrow">Matchday screen</p><h2>Watch live</h2></div></div>
+        <div class="watch-panel">
+          <div>
+            <strong>Live soccer stream</strong>
+            <p>Open the match stream in a new tab while the pool board stays ready for updates.</p>
+          </div>
+          <a class="watch-link" href="https://thetvapptv.com/soccer-streams" target="_blank" rel="noreferrer">Open Stream</a>
+        </div>
       </section>
 
       <section class="section" id="winners">
