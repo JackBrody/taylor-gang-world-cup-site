@@ -239,6 +239,82 @@ function roundOf16Card(player) {
   return '<article class="fixture-card"><div class="fixture-top"><span>Picks</span><span>' + player.name + '</span></div><div class="pick-list">' + body + '</div></article>';
 }
 
+function matchKey(teamA, teamB) {
+  return [canonicalTeam(teamA), canonicalTeam(teamB)].sort().join('|');
+}
+
+function scoreForTeam(match, teamName) {
+  const team = (match.teams || []).find((entry) => canonicalTeam(entry.name) === canonicalTeam(teamName));
+  return team ? team.score : '';
+}
+
+function bracketTeam(teamName, match) {
+  const name = cleanTeam(teamName || 'TBD');
+  const isWinner = match && canonicalTeam(match.winner) === canonicalTeam(name);
+  const score = match ? scoreForTeam(match, name) : '';
+  return '<div class="bracket-team ' + (isWinner ? 'winner' : '') + '"><strong>' + name + '</strong><span class="bracket-score">' + score + '</span></div>';
+}
+
+function bracketMatch(label, date, teamA, teamB, match) {
+  return '<article class="bracket-match ' + (!match ? 'pending' : '') + '"><div class="bracket-meta"><span>' + label + '</span><span>' + date + '</span></div>' + bracketTeam(teamA, match) + bracketTeam(teamB, match) + '</article>';
+}
+
+function findMatch(matchMap, teamA, teamB) {
+  return matchMap.get(matchKey(teamA, teamB));
+}
+
+function winnerOrTbd(match) {
+  return match && match.winner ? cleanTeam(match.winner) : 'TBD';
+}
+
+function buildBracket(results) {
+  const matchMap = new Map((results.matches || []).map((match) => [matchKey(match.teams[0].name, match.teams[1].name), match]));
+
+  const roundOf16 = [
+    { label: 'R16 1', date: 'Jul 4', teams: ['Canada', 'Morocco'] },
+    { label: 'R16 2', date: 'Jul 4', teams: ['France', 'Paraguay'] },
+    { label: 'R16 3', date: 'Jul 5', teams: ['Brazil', 'Norway'] },
+    { label: 'R16 4', date: 'Jul 5', teams: ['Mexico', 'England'] },
+    { label: 'R16 5', date: 'Jul 6', teams: ['Spain', 'Portugal'] },
+    { label: 'R16 6', date: 'Jul 6', teams: ['United States', 'Belgium'] },
+    { label: 'R16 7', date: 'Jul 7', teams: ['Argentina', 'Egypt'] },
+    { label: 'R16 8', date: 'Jul 7', teams: ['Switzerland', 'Colombia'] }
+  ].map((slot) => ({ ...slot, match: findMatch(matchMap, slot.teams[0], slot.teams[1]) }));
+
+  const quarterfinals = [
+    { label: 'QF 1', date: 'Jul 9', source: [0, 1] },
+    { label: 'QF 2', date: 'Jul 10', source: [2, 3] },
+    { label: 'QF 3', date: 'Jul 10', source: [4, 5] },
+    { label: 'QF 4', date: 'Jul 11', source: [6, 7] }
+  ].map((slot) => {
+    const teams = slot.source.map((index) => winnerOrTbd(roundOf16[index].match));
+    return { ...slot, teams, match: teams.includes('TBD') ? null : findMatch(matchMap, teams[0], teams[1]) };
+  });
+
+  const semifinals = [
+    { label: 'SF 1', date: 'Jul 14', source: [0, 1] },
+    { label: 'SF 2', date: 'Jul 15', source: [2, 3] }
+  ].map((slot) => {
+    const teams = slot.source.map((index) => winnerOrTbd(quarterfinals[index].match));
+    return { ...slot, teams, match: teams.includes('TBD') ? null : findMatch(matchMap, teams[0], teams[1]) };
+  });
+
+  const finalTeams = semifinals.map((slot) => winnerOrTbd(slot.match));
+  const finalMatch = finalTeams.includes('TBD') ? null : findMatch(matchMap, finalTeams[0], finalTeams[1]);
+
+  return [
+    { title: 'Round of 16', matches: roundOf16 },
+    { title: 'Quarterfinals', matches: quarterfinals },
+    { title: 'Semi-finals', matches: semifinals },
+    { title: 'Final', matches: [{ label: 'Final', date: 'Jul 19', teams: finalTeams, match: finalMatch }] }
+  ];
+}
+
+function bracketRound(round) {
+  const matches = round.matches.map((slot) => bracketMatch(slot.label, slot.date, slot.teams[0], slot.teams[1], slot.match)).join('');
+  return '<div class="bracket-round"><h3>' + round.title + '</h3>' + matches + '</div>';
+}
+
 async function render({ manual = false } = {}) {
   const updateButtons = Array.from(document.querySelectorAll('.update-button'));
 
@@ -259,6 +335,7 @@ async function render({ manual = false } = {}) {
     document.querySelector('#podium').innerHTML = pool.leaderboard.slice(0, 3).map(podiumCard).join('');
     document.querySelector('#matchGrid').innerHTML = results.matches.map(matchCard).join('');
     document.querySelector('#leaderboardRows').innerHTML = pool.leaderboard.map(leaderboardRow).join('');
+    document.querySelector('#bracketGrid').innerHTML = buildBracket(results).map(bracketRound).join('');
     document.querySelector('#fixtureGrid').innerHTML = (pool.roundOf16Picks || []).map(roundOf16Card).join('');
   } finally {
     if (manual) {
