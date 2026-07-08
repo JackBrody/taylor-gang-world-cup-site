@@ -3,7 +3,8 @@ const flagUrl = (code) => 'https://flagcdn.com/w80/' + code + '.png';
 const sheetUrls = {
   groups: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkYrXOdNaoswPyFHdMbSJCaO5U_JSk2KucQv_XMfGYu3ZUuDYpP2wI91C1UrEn15gP-KX0Ma33nRim/pub?gid=521295586&single=true&output=csv',
   roundOf32: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkYrXOdNaoswPyFHdMbSJCaO5U_JSk2KucQv_XMfGYu3ZUuDYpP2wI91C1UrEn15gP-KX0Ma33nRim/pub?gid=2001384069&single=true&output=csv',
-  roundOf16: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkYrXOdNaoswPyFHdMbSJCaO5U_JSk2KucQv_XMfGYu3ZUuDYpP2wI91C1UrEn15gP-KX0Ma33nRim/pub?gid=417647722&single=true&output=csv'
+  roundOf16: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkYrXOdNaoswPyFHdMbSJCaO5U_JSk2KucQv_XMfGYu3ZUuDYpP2wI91C1UrEn15gP-KX0Ma33nRim/pub?gid=417647722&single=true&output=csv',
+  quarterfinals: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkYrXOdNaoswPyFHdMbSJCaO5U_JSk2KucQv_XMfGYu3ZUuDYpP2wI91C1UrEn15gP-KX0Ma33nRim/pub?gid=913422121&single=true&output=csv'
 };
 
 async function loadJson(path) {
@@ -117,6 +118,20 @@ function emptyPicks(players) {
   return players.map((name) => ({ name, picks: [] }));
 }
 
+function parsePlayerPickColumns(rows, players) {
+  const headerIndex = rows.findIndex((row) => players.filter((player) => row.some((cell) => cell === player)).length >= 2);
+  if (headerIndex < 0) return emptyPicks(players);
+
+  const header = rows[headerIndex];
+  return players.map((name) => {
+    const columnIndex = header.findIndex((cell) => cell === name);
+    const picks = columnIndex < 0
+      ? []
+      : rows.slice(headerIndex + 1).map((row) => cleanTeam(row[columnIndex])).filter(Boolean);
+    return { name, picks };
+  });
+}
+
 async function loadPool() {
   const fallback = loadJson('./data/pool.json');
 
@@ -124,12 +139,14 @@ async function loadPool() {
     const sheetData = await Promise.all([
       loadText(sheetUrls.groups),
       loadText(sheetUrls.roundOf32),
-      loadText(sheetUrls.roundOf16)
+      loadText(sheetUrls.roundOf16),
+      loadText(sheetUrls.quarterfinals)
     ]);
 
     const groupRows = parseCsv(sheetData[0]);
     const roundOf32Rows = parseCsv(sheetData[1]);
     const roundOf16Rows = parseCsv(sheetData[2]);
+    const quarterfinalRows = parseCsv(sheetData[3]);
     const players = playersFromHeader(groupRows[0]);
     const groupTotal = rowByLabel(groupRows, 'TOTAL') || [];
     const championRow = rowByLabel(groupRows, 'Champion') || [];
@@ -167,7 +184,7 @@ async function loadPool() {
       name,
       picks: roundOf16Rows.slice(1).map((row) => cleanTeam(row[index + 1])).filter(Boolean)
     }));
-    const quarterfinalPicks = emptyPicks(players);
+    const quarterfinalPicks = parsePlayerPickColumns(quarterfinalRows, players);
 
     return {
       generatedFrom: 'Published Google Sheet',
