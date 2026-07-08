@@ -8,7 +8,7 @@
     <style>
       .bracket-grid {
         display: grid;
-        grid-template-columns: repeat(4, minmax(220px, 1fr));
+        grid-template-columns: repeat(4, minmax(190px, 1fr)) minmax(280px, 1.35fr);
         gap: 16px;
         align-items: start;
       }
@@ -23,6 +23,59 @@
         color: var(--gold);
         font-size: 0.95rem;
         text-transform: uppercase;
+      }
+
+      .bracket-round-final {
+        position: relative;
+      }
+
+      .bracket-round-final h3 {
+        font-size: 1.2rem;
+      }
+
+      .bracket-round-final .bracket-match {
+        position: relative;
+        min-height: 290px;
+        display: grid;
+        align-content: end;
+        overflow: hidden;
+        border-color: rgba(255, 214, 128, 0.64);
+        background:
+          linear-gradient(145deg, rgba(218, 170, 73, 0.34), rgba(255, 255, 255, 0.08) 42%, rgba(0, 0, 0, 0.38)),
+          rgba(0, 0, 0, 0.32);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+          0 18px 46px rgba(0, 0, 0, 0.28);
+      }
+
+      .bracket-round-final .bracket-match::before {
+        content: "WORLD CUP FINAL";
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        right: 18px;
+        color: rgba(255, 255, 255, 0.1);
+        font-size: clamp(2.2rem, 4vw, 4rem);
+        font-weight: 900;
+        line-height: 0.9;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+
+      .bracket-round-final .bracket-meta {
+        position: relative;
+        color: #ffffff;
+        font-size: 0.82rem;
+        font-weight: 800;
+      }
+
+      .bracket-round-final .bracket-team {
+        position: relative;
+        min-height: 52px;
+        padding: 12px 14px;
+        font-size: 1.08rem;
+        background: rgba(0, 0, 0, 0.34);
+        box-shadow: inset 0 0 0 1px rgba(255, 214, 128, 0.22);
       }
 
       .bracket-match {
@@ -108,6 +161,10 @@
       @media (max-width: 980px) {
         .bracket-grid {
           grid-template-columns: repeat(2, minmax(220px, 1fr));
+        }
+
+        .bracket-round-final {
+          grid-column: 1 / -1;
         }
       }
 
