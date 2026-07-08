@@ -275,6 +275,17 @@ function quarterfinalCard(player) {
   return pickCard(player, 'Quarterfinals');
 }
 
+function picksTable(players, picksByPlayer) {
+  const picks = picksByPlayer || emptyPicks(players || []);
+  const maxRows = Math.max(0, ...picks.map((player) => (player.picks || []).length));
+  const headers = picks.map((player) => '<th>' + player.name + '</th>').join('');
+  const rows = Array.from({ length: maxRows }, (_, rowIndex) => {
+    const cells = picks.map((player) => '<td>' + cleanTeam((player.picks || [])[rowIndex] || '') + '</td>').join('');
+    return '<tr>' + cells + '</tr>';
+  }).join('');
+  return '<div class="picks-table-wrap"><table class="picks-table"><thead><tr>' + headers + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
+}
+
 function matchKey(teamA, teamB) {
   return [canonicalTeam(teamA), canonicalTeam(teamB)].sort().join('|');
 }
@@ -385,7 +396,7 @@ async function render({ manual = false } = {}) {
     document.querySelector('#matchGrid').innerHTML = latestMatches(results).map(matchCard).join('');
     document.querySelector('#leaderboardRows').innerHTML = pool.leaderboard.map(leaderboardRow).join('');
     document.querySelector('#bracketGrid').innerHTML = buildBracket(results).map(bracketRound).join('');
-    document.querySelector('#quarterfinalGrid').innerHTML = (pool.quarterfinalPicks || emptyPicks(pool.players || [])).map(quarterfinalCard).join('');
+    document.querySelector('#quarterfinalGrid').innerHTML = picksTable(pool.players || [], pool.quarterfinalPicks);
     document.querySelector('#fixtureGrid').innerHTML = (pool.roundOf16Picks || []).map(roundOf16Card).join('');
   } finally {
     if (manual) {
