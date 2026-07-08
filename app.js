@@ -339,7 +339,8 @@ function buildBracket(results) {
 
 function bracketRound(round) {
   const matches = round.matches.map((slot) => bracketMatch(slot.label, slot.date, slot.teams[0], slot.teams[1], slot.match)).join('');
-  return '<div class="bracket-round"><h3>' + round.title + '</h3>' + matches + '</div>';
+  const roundClass = cleanTeam(round.title).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  return '<div class="bracket-round bracket-round-' + roundClass + '"><h3>' + round.title + '</h3>' + matches + '</div>';
 }
 
 async function render({ manual = false } = {}) {
