@@ -297,12 +297,15 @@ function buildBracket(results) {
   ].map((slot) => ({ ...slot, match: findMatch(matchMap, slot.teams[0], slot.teams[1]) }));
 
   const quarterfinals = [
-    { label: 'QF 1', date: 'Jul 9', source: [0, 1] },
-    { label: 'QF 2', date: 'Jul 10', source: [4, 5] },
-    { label: 'QF 3', date: 'Jul 10', source: [2, 3] },
-    { label: 'QF 4', date: 'Jul 11', source: [6, 7] }
+    { label: 'QF 1', date: 'Thu, Jul 9 4:00 p.m.', teams: ['France', 'Morocco'] },
+    { label: 'QF 2', date: 'Fri, Jul 10 3:00 p.m.', teams: ['Spain', 'Belgium'] },
+    { label: 'QF 3', date: 'Sat, Jul 11 5:00 p.m.', teams: ['Norway', 'England'] },
+    { label: 'QF 4', date: 'Sat, Jul 11 9:00 p.m.', teams: ['Argentina', 'Switzerland'] }
   ].map((slot) => {
-    const teams = slot.source.map((index) => winnerOrTbd(roundOf16[index].match));
+    const teams = slot.teams.map((team) => {
+      const qualified = roundOf16.some((roundSlot) => canonicalTeam(roundSlot.match && roundSlot.match.winner) === canonicalTeam(team));
+      return qualified ? team : 'TBD';
+    });
     return { ...slot, teams, match: teams.includes('TBD') ? null : findMatch(matchMap, teams[0], teams[1]) };
   });
 
