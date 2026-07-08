@@ -193,6 +193,10 @@ function matchCard(match) {
   return '<article class="match-card"><div class="match-top"><span>' + match.date + '</span><span>' + match.stage + '</span></div><p class="scoreline">' + match.scoreline + '</p>' + teamLine(match.teams[0], match.winner) + teamLine(match.teams[1], match.winner) + '</article>';
 }
 
+function latestMatches(results) {
+  return (results.matches || []).filter((match) => String(match.stage || '').toLowerCase() !== 'round of 32');
+}
+
 function winnersByStage(results, stageName) {
   return (results.matches || [])
     .filter((match) => String(match.stage || '').toLowerCase() === stageName.toLowerCase())
@@ -361,7 +365,7 @@ async function render({ manual = false } = {}) {
     document.querySelector('#sourceLink').href = results.source.url;
     document.querySelector('#sourceLink').textContent = results.source.name;
     document.querySelector('#podium').innerHTML = pool.leaderboard.slice(0, 3).map(podiumCard).join('');
-    document.querySelector('#matchGrid').innerHTML = results.matches.map(matchCard).join('');
+    document.querySelector('#matchGrid').innerHTML = latestMatches(results).map(matchCard).join('');
     document.querySelector('#leaderboardRows').innerHTML = pool.leaderboard.map(leaderboardRow).join('');
     document.querySelector('#bracketGrid').innerHTML = buildBracket(results).map(bracketRound).join('');
     document.querySelector('#quarterfinalGrid').innerHTML = (pool.quarterfinalPicks || emptyPicks(pool.players || [])).map(quarterfinalCard).join('');
