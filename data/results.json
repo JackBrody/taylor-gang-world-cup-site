@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-07-06",
-  "stage": "Round of 16",
+  "lastUpdated": "2026-07-07",
+  "stage": "Quarterfinals",
   "source": {
     "name": "SB Nation Round of 16 tracker",
     "url": "https://www.sbnation.com/soccer/1121525/2026-world-cup-round-of-16-scores-schedule"
@@ -214,6 +214,36 @@
       "teams": [
         { "name": "Spain", "flag": "es", "score": 1 },
         { "name": "Portugal", "flag": "pt", "score": 0 }
+      ]
+    },
+    {
+      "date": "2026-07-06",
+      "stage": "Round of 16",
+      "winner": "Belgium",
+      "scoreline": "4-1",
+      "teams": [
+        { "name": "United States", "flag": "us", "score": 1 },
+        { "name": "Belgium", "flag": "be", "score": 4 }
+      ]
+    },
+    {
+      "date": "2026-07-07",
+      "stage": "Round of 16",
+      "winner": "Argentina",
+      "scoreline": "3-2",
+      "teams": [
+        { "name": "Argentina", "flag": "ar", "score": 3 },
+        { "name": "Egypt", "flag": "eg", "score": 2 }
+      ]
+    },
+    {
+      "date": "2026-07-07",
+      "stage": "Round of 16",
+      "winner": "Switzerland",
+      "scoreline": "0-0 (4-3 pens)",
+      "teams": [
+        { "name": "Switzerland", "flag": "ch", "score": "0 (4p)" },
+        { "name": "Colombia", "flag": "co", "score": "0 (3p)" }
       ]
     }
   ]
