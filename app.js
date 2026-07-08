@@ -282,6 +282,12 @@ function winnerOrTbd(match) {
   return match && match.winner ? cleanTeam(match.winner) : 'TBD';
 }
 
+function loserOrTbd(match) {
+  if (!match || !match.winner) return 'TBD';
+  const loser = (match.teams || []).find((team) => canonicalTeam(team.name) !== canonicalTeam(match.winner));
+  return loser ? cleanTeam(loser.name) : 'TBD';
+}
+
 function buildBracket(results) {
   const matchMap = new Map((results.matches || []).map((match) => [matchKey(match.teams[0].name, match.teams[1].name), match]));
 
@@ -310,8 +316,8 @@ function buildBracket(results) {
   });
 
   const semifinals = [
-    { label: 'SF 1', date: 'Jul 14', source: [0, 1] },
-    { label: 'SF 2', date: 'Jul 15', source: [2, 3] }
+    { label: 'SF 1', date: 'Tue, Jul 14 3:00 p.m.', source: [0, 1] },
+    { label: 'SF 2', date: 'Wed, Jul 15 3:00 p.m.', source: [2, 3] }
   ].map((slot) => {
     const teams = slot.source.map((index) => winnerOrTbd(quarterfinals[index].match));
     return { ...slot, teams, match: teams.includes('TBD') ? null : findMatch(matchMap, teams[0], teams[1]) };
@@ -319,12 +325,15 @@ function buildBracket(results) {
 
   const finalTeams = semifinals.map((slot) => winnerOrTbd(slot.match));
   const finalMatch = finalTeams.includes('TBD') ? null : findMatch(matchMap, finalTeams[0], finalTeams[1]);
+  const thirdPlaceTeams = semifinals.map((slot) => loserOrTbd(slot.match));
+  const thirdPlaceMatch = thirdPlaceTeams.includes('TBD') ? null : findMatch(matchMap, thirdPlaceTeams[0], thirdPlaceTeams[1]);
 
   return [
     { title: 'Round of 16', matches: roundOf16 },
     { title: 'Quarterfinals', matches: quarterfinals },
     { title: 'Semi-finals', matches: semifinals },
-    { title: 'Final', matches: [{ label: 'Final', date: 'Jul 19', teams: finalTeams, match: finalMatch }] }
+    { title: 'Third place play-off', matches: [{ label: 'Third place play-off', date: 'Sat, Jul 18 5:00 p.m.', teams: thirdPlaceTeams, match: thirdPlaceMatch }] },
+    { title: 'Final', matches: [{ label: 'Final', date: 'Sun, Jul 19 3:00 p.m.', teams: finalTeams, match: finalMatch }] }
   ];
 }
 
