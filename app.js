@@ -113,6 +113,10 @@ function parsePickRows(rows, players) {
     .filter((fixture) => fixture.home && fixture.away);
 }
 
+function emptyPicks(players) {
+  return players.map((name) => ({ name, picks: [] }));
+}
+
 async function loadPool() {
   const fallback = loadJson('./data/pool.json');
 
@@ -163,6 +167,7 @@ async function loadPool() {
       name,
       picks: roundOf16Rows.slice(1).map((row) => cleanTeam(row[index + 1])).filter(Boolean)
     }));
+    const quarterfinalPicks = emptyPicks(players);
 
     return {
       generatedFrom: 'Published Google Sheet',
@@ -170,7 +175,8 @@ async function loadPool() {
       leaderboard,
       groupPicks,
       roundOf32Picks: parsePickRows(roundOf32Rows, players),
-      roundOf16Picks
+      roundOf16Picks,
+      quarterfinalPicks
     };
   } catch (error) {
     console.warn('Using saved pool data because the Google Sheet could not be loaded.', error);
@@ -205,10 +211,11 @@ function scorePool(pool, results) {
   const semifinalWinners = winnersByStage(results, 'Semi-finals');
   const finalWinners = winnersByStage(results, 'Finals');
   const roundOf16ByPlayer = new Map((pool.roundOf16Picks || []).map((player) => [player.name, player.picks || []]));
+  const quarterfinalByPlayer = new Map((pool.quarterfinalPicks || []).map((player) => [player.name, player.picks || []]));
 
   const leaderboard = (pool.leaderboard || []).map((row) => {
     const roundOf16Points = pointsForWinners(roundOf16ByPlayer.get(row.name), roundOf16Winners);
-    const quarterfinalPoints = pointsForWinners([], quarterfinalWinners);
+    const quarterfinalPoints = pointsForWinners(quarterfinalByPlayer.get(row.name), quarterfinalWinners);
     const semifinalPoints = pointsForWinners([], semifinalWinners);
     const finalPoints = pointsForWinners([], finalWinners);
 
@@ -233,10 +240,18 @@ function podiumCard(row, index) {
   return '<article class="podium-card"><span class="rank">' + (index + 1) + '</span><div><span class="label">' + row.champion + ' champion pick</span><strong>' + row.name + '</strong></div><span class="points">' + row.total + '</span></article>';
 }
 
-function roundOf16Card(player) {
+function pickCard(player, label) {
   const chips = (player.picks || []).map((team) => '<span class="pick-chip"><strong>' + cleanTeam(team) + '</strong></span>').join('');
   const body = chips || '<span class="pick-chip"><strong>Not submitted</strong></span>';
-  return '<article class="fixture-card"><div class="fixture-top"><span>Picks</span><span>' + player.name + '</span></div><div class="pick-list">' + body + '</div></article>';
+  return '<article class="fixture-card"><div class="fixture-top"><span>' + label + '</span><span>' + player.name + '</span></div><div class="pick-list">' + body + '</div></article>';
+}
+
+function roundOf16Card(player) {
+  return pickCard(player, 'Round of 16');
+}
+
+function quarterfinalCard(player) {
+  return pickCard(player, 'Quarterfinals');
 }
 
 function matchKey(teamA, teamB) {
@@ -283,8 +298,8 @@ function buildBracket(results) {
 
   const quarterfinals = [
     { label: 'QF 1', date: 'Jul 9', source: [0, 1] },
-    { label: 'QF 2', date: 'Jul 10', source: [2, 3] },
-    { label: 'QF 3', date: 'Jul 10', source: [4, 5] },
+    { label: 'QF 2', date: 'Jul 10', source: [4, 5] },
+    { label: 'QF 3', date: 'Jul 10', source: [2, 3] },
     { label: 'QF 4', date: 'Jul 11', source: [6, 7] }
   ].map((slot) => {
     const teams = slot.source.map((index) => winnerOrTbd(roundOf16[index].match));
@@ -336,6 +351,7 @@ async function render({ manual = false } = {}) {
     document.querySelector('#matchGrid').innerHTML = results.matches.map(matchCard).join('');
     document.querySelector('#leaderboardRows').innerHTML = pool.leaderboard.map(leaderboardRow).join('');
     document.querySelector('#bracketGrid').innerHTML = buildBracket(results).map(bracketRound).join('');
+    document.querySelector('#quarterfinalGrid').innerHTML = (pool.quarterfinalPicks || emptyPicks(pool.players || [])).map(quarterfinalCard).join('');
     document.querySelector('#fixtureGrid').innerHTML = (pool.roundOf16Picks || []).map(roundOf16Card).join('');
   } finally {
     if (manual) {
