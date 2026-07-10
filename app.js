@@ -270,10 +270,6 @@ function pickCard(player, label) {
   return '<article class="fixture-card"><div class="fixture-top"><span>' + label + '</span><span>' + player.name + '</span></div><div class="pick-list">' + body + '</div></article>';
 }
 
-function roundOf16Card(player) {
-  return pickCard(player, 'Round of 16');
-}
-
 function quarterfinalCard(player) {
   return pickCard(player, 'Quarterfinals');
 }
@@ -399,7 +395,6 @@ async function render({ manual = false } = {}) {
     document.querySelector('#leaderboardRows').innerHTML = pool.leaderboard.map(leaderboardRow).join('');
     document.querySelector('#bracketGrid').innerHTML = buildBracket(results).map(bracketRound).join('');
     document.querySelector('#quarterfinalGrid').innerHTML = picksTable(pool.players || [], pool.quarterfinalPicks);
-    document.querySelector('#fixtureGrid').innerHTML = (pool.roundOf16Picks || []).map(roundOf16Card).join('');
   } finally {
     if (manual) {
       updateButtons.forEach((button) => {
