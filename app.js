@@ -7,8 +7,11 @@ const sheetUrls = {
   quarterfinals: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkYrXOdNaoswPyFHdMbSJCaO5U_JSk2KucQv_XMfGYu3ZUuDYpP2wI91C1UrEn15gP-KX0Ma33nRim/pub?gid=913422121&single=true&output=csv'
 };
 
+const AUTO_REFRESH_MS = 6 * 60 * 60 * 1000;
+
 async function loadJson(path) {
-  const response = await fetch(path, { cache: 'no-store' });
+  const bust = path.includes('?') ? '&' : '?';
+  const response = await fetch(path + bust + 'v=' + Date.now(), { cache: 'no-store' });
   if (!response.ok) throw new Error('Could not load ' + path);
   return response.json();
 }
@@ -211,7 +214,7 @@ function matchCard(match) {
 }
 
 function latestMatches(results) {
-  return (results.matches || []).filter((match) => String(match.stage || '').toLowerCase() !== 'round of 32');
+  return (results.matches || []).filter((match) => !['round of 32', 'round of 16'].includes(String(match.stage || '').toLowerCase()));
 }
 
 function winnersByStage(results, stageName) {
@@ -361,7 +364,6 @@ function buildBracket(results) {
   const thirdPlaceMatch = thirdPlaceTeams.includes('TBD') ? null : findMatch(matchMap, thirdPlaceTeams[0], thirdPlaceTeams[1]);
 
   return [
-    { title: 'Round of 16', matches: roundOf16 },
     { title: 'Quarterfinals', matches: quarterfinals },
     { title: 'Semi-finals', matches: semifinals },
     { title: 'Third place play-off', matches: [{ label: 'Third place play-off', date: 'Sat, Jul 18 5:00 p.m.', teams: thirdPlaceTeams, match: thirdPlaceMatch }] },
@@ -414,3 +416,9 @@ document.querySelectorAll('.update-button').forEach((button) => {
 render().catch((error) => {
   document.querySelector('#matchGrid').innerHTML = '<p>' + error.message + '</p>';
 });
+
+setInterval(() => {
+  render().catch((error) => {
+    console.warn('Automatic refresh failed.', error);
+  });
+}, AUTO_REFRESH_MS);
