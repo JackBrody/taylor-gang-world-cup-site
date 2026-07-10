@@ -2,8 +2,8 @@
   "lastUpdated": "2026-07-10",
   "stage": "Quarterfinals",
   "source": {
-    "name": "Le Monde World Cup quarterfinal coverage",
-    "url": "https://www.lemonde.fr/en/sports/article/2026/07/10/france-s-powerful-attack-secures-win-against-morocco-and-world-cup-semi-final-spot_6755328_9.html"
+    "name": "AP World Cup quarterfinal coverage",
+    "url": "https://apnews.com/article/780243a17571b6b2b26074b66feec90a"
   },
   "matches": [
     {
@@ -254,6 +254,16 @@
       "teams": [
         { "name": "France", "flag": "fr", "score": 2 },
         { "name": "Morocco", "flag": "ma", "score": 0 }
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "stage": "Quarterfinals",
+      "winner": "Spain",
+      "scoreline": "2-1",
+      "teams": [
+        { "name": "Spain", "flag": "es", "score": 2 },
+        { "name": "Belgium", "flag": "be", "score": 1 }
       ]
     }
   ]
