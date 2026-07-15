@@ -1,9 +1,9 @@
 {
   "lastUpdated": "2026-07-10",
-  "stage": "Quarterfinals",
+  "stage": "Semi-finals",
   "source": {
-    "name": "AP World Cup quarterfinal coverage",
-    "url": "https://apnews.com/article/780243a17571b6b2b26074b66feec90a"
+    "name": "AP World Cup semifinal coverage",
+    "url": "https://apnews.com/article/87fb7740fa552edf4bfd28d0e8727c23"
   },
   "matches": [
     {
@@ -264,6 +264,36 @@
       "teams": [
         { "name": "Spain", "flag": "es", "score": 2 },
         { "name": "Belgium", "flag": "be", "score": 1 }
+      ]
+    },
+    {
+      "date": "2026-07-11",
+      "stage": "Quarterfinals",
+      "winner": "England",
+      "scoreline": "2-1 aet",
+      "teams": [
+        { "name": "Norway", "flag": "no", "score": 1 },
+        { "name": "England", "flag": "gb-eng", "score": 2 }
+      ]
+    },
+    {
+      "date": "2026-07-11",
+      "stage": "Quarterfinals",
+      "winner": "Argentina",
+      "scoreline": "3-1 aet",
+      "teams": [
+        { "name": "Argentina", "flag": "ar", "score": 3 },
+        { "name": "Switzerland", "flag": "ch", "score": 1 }
+      ]
+    },
+    {
+      "date": "2026-07-14",
+      "stage": "Semi-finals",
+      "winner": "Spain",
+      "scoreline": "2-0",
+      "teams": [
+        { "name": "France", "flag": "fr", "score": 0 },
+        { "name": "Spain", "flag": "es", "score": 2 }
       ]
     }
   ]
