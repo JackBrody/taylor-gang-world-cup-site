@@ -4,7 +4,8 @@ const sheetUrls = {
   groups: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkYrXOdNaoswPyFHdMbSJCaO5U_JSk2KucQv_XMfGYu3ZUuDYpP2wI91C1UrEn15gP-KX0Ma33nRim/pub?gid=521295586&single=true&output=csv',
   roundOf32: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkYrXOdNaoswPyFHdMbSJCaO5U_JSk2KucQv_XMfGYu3ZUuDYpP2wI91C1UrEn15gP-KX0Ma33nRim/pub?gid=2001384069&single=true&output=csv',
   roundOf16: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkYrXOdNaoswPyFHdMbSJCaO5U_JSk2KucQv_XMfGYu3ZUuDYpP2wI91C1UrEn15gP-KX0Ma33nRim/pub?gid=417647722&single=true&output=csv',
-  quarterfinals: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkYrXOdNaoswPyFHdMbSJCaO5U_JSk2KucQv_XMfGYu3ZUuDYpP2wI91C1UrEn15gP-KX0Ma33nRim/pub?gid=913422121&single=true&output=csv'
+  quarterfinals: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkYrXOdNaoswPyFHdMbSJCaO5U_JSk2KucQv_XMfGYu3ZUuDYpP2wI91C1UrEn15gP-KX0Ma33nRim/pub?gid=913422121&single=true&output=csv',
+  semifinals: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSkYrXOdNaoswPyFHdMbSJCaO5U_JSk2KucQv_XMfGYu3ZUuDYpP2wI91C1UrEn15gP-KX0Ma33nRim/pub?gid=96105003&single=true&output=csv'
 };
 
 const AUTO_REFRESH_MS = 6 * 60 * 60 * 1000;
@@ -143,13 +144,15 @@ async function loadPool() {
       loadText(sheetUrls.groups),
       loadText(sheetUrls.roundOf32),
       loadText(sheetUrls.roundOf16),
-      loadText(sheetUrls.quarterfinals)
+      loadText(sheetUrls.quarterfinals),
+      loadText(sheetUrls.semifinals)
     ]);
 
     const groupRows = parseCsv(sheetData[0]);
     const roundOf32Rows = parseCsv(sheetData[1]);
     const roundOf16Rows = parseCsv(sheetData[2]);
     const quarterfinalRows = parseCsv(sheetData[3]);
+    const semifinalRows = parseCsv(sheetData[4]);
     const players = playersFromHeader(groupRows[0]);
     const groupTotal = rowByLabel(groupRows, 'TOTAL') || [];
     const championRow = rowByLabel(groupRows, 'Champion') || [];
@@ -188,6 +191,7 @@ async function loadPool() {
       picks: roundOf16Rows.slice(1).map((row) => cleanTeam(row[index + 1])).filter(Boolean)
     }));
     const quarterfinalPicks = parsePlayerPickColumns(quarterfinalRows, players);
+    const semifinalPicks = parsePlayerPickColumns(semifinalRows, players);
 
     return {
       generatedFrom: 'Published Google Sheet',
@@ -196,7 +200,8 @@ async function loadPool() {
       groupPicks,
       roundOf32Picks: parsePickRows(roundOf32Rows, players),
       roundOf16Picks,
-      quarterfinalPicks
+      quarterfinalPicks,
+      semifinalPicks
     };
   } catch (error) {
     console.warn('Using saved pool data because the Google Sheet could not be loaded.', error);
@@ -236,11 +241,12 @@ function scorePool(pool, results) {
   const finalWinners = winnersByStage(results, 'Finals');
   const roundOf16ByPlayer = new Map((pool.roundOf16Picks || []).map((player) => [player.name, player.picks || []]));
   const quarterfinalByPlayer = new Map((pool.quarterfinalPicks || []).map((player) => [player.name, player.picks || []]));
+  const semifinalByPlayer = new Map((pool.semifinalPicks || []).map((player) => [player.name, player.picks || []]));
 
   const leaderboard = (pool.leaderboard || []).map((row) => {
     const roundOf16Points = pointsForWinners(roundOf16ByPlayer.get(row.name), roundOf16Winners);
     const quarterfinalPoints = pointsForWinners(quarterfinalByPlayer.get(row.name), quarterfinalWinners);
-    const semifinalPoints = pointsForWinners([], semifinalWinners);
+    const semifinalPoints = pointsForWinners(semifinalByPlayer.get(row.name), semifinalWinners);
     const finalPoints = pointsForWinners([], finalWinners);
 
     return {
@@ -394,7 +400,7 @@ async function render({ manual = false } = {}) {
     document.querySelector('#matchGrid').innerHTML = latestMatches(results).map(matchCard).join('');
     document.querySelector('#leaderboardRows').innerHTML = pool.leaderboard.map(leaderboardRow).join('');
     document.querySelector('#bracketGrid').innerHTML = buildBracket(results).map(bracketRound).join('');
-    document.querySelector('#quarterfinalGrid').innerHTML = picksTable(pool.players || [], pool.quarterfinalPicks);
+    document.querySelector('#semifinalGrid').innerHTML = picksTable(pool.players || [], pool.semifinalPicks);
   } finally {
     if (manual) {
       updateButtons.forEach((button) => {
