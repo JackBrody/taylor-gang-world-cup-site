@@ -657,5 +657,39 @@
       "name": "Mila",
       "picks": ["France", "Spain", "Norway", "Switzerland"]
     }
+  ],
+  "semifinalPicks": [
+    {
+      "name": "Cory",
+      "picks": ["France", "England"]
+    },
+    {
+      "name": "Meghan",
+      "picks": ["France", "England"]
+    },
+    {
+      "name": "Poppy",
+      "picks": ["France", "Argentina"]
+    },
+    {
+      "name": "Kris",
+      "picks": ["France", "Argentina"]
+    },
+    {
+      "name": "Wade",
+      "picks": ["France", "England"]
+    },
+    {
+      "name": "Sean",
+      "picks": ["Spain", "Argentina"]
+    },
+    {
+      "name": "Emma",
+      "picks": ["Spain", "Argentina"]
+    },
+    {
+      "name": "Mila",
+      "picks": ["Spain", "Argentina"]
+    }
   ]
 }
