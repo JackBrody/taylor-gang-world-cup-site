@@ -193,67 +193,79 @@
         background: rgba(0, 0, 0, 0.18);
       }
 
-      .final-contenders {
+      .bronze-pick-grid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(220px, 1fr));
-        gap: 16px;
+        grid-template-columns: repeat(4, minmax(150px, 1fr));
+        gap: 14px;
       }
 
-      .final-card {
+      .bronze-card {
         position: relative;
         overflow: hidden;
-        min-height: 170px;
-        border: 1px solid rgba(255, 214, 128, 0.42);
+        min-height: 145px;
+        border: 1px solid rgba(255, 214, 128, 0.34);
         border-radius: 8px;
-        padding: 20px;
+        padding: 18px;
         background:
-          linear-gradient(145deg, rgba(218, 170, 73, 0.28), rgba(255, 255, 255, 0.07) 44%, rgba(0, 0, 0, 0.32)),
+          linear-gradient(145deg, rgba(218, 170, 73, 0.24), rgba(255, 255, 255, 0.07) 48%, rgba(0, 0, 0, 0.34)),
           rgba(0, 0, 0, 0.26);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
       }
 
-      .final-card::before {
-        content: "FINAL";
+      .bronze-card::before {
+        content: "3RD";
         position: absolute;
-        right: -8px;
-        bottom: -8px;
+        right: -4px;
+        bottom: -6px;
         color: rgba(255, 255, 255, 0.08);
-        font-size: clamp(3rem, 8vw, 6rem);
+        font-size: 4.6rem;
         font-weight: 900;
         line-height: 0.8;
         pointer-events: none;
       }
 
-      .final-team {
+      .bronze-card-france {
+        background:
+          linear-gradient(145deg, rgba(0, 85, 164, 0.46), rgba(255, 255, 255, 0.08) 48%, rgba(239, 65, 53, 0.28)),
+          rgba(0, 0, 0, 0.28);
+      }
+
+      .bronze-card-england {
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(202, 33, 40, 0.36) 48%, rgba(0, 0, 0, 0.34)),
+          rgba(0, 0, 0, 0.28);
+      }
+
+      .bronze-card-empty {
+        opacity: 0.68;
+      }
+
+      .bronze-player {
         position: relative;
         display: block;
         color: var(--gold);
-        font-size: 1.45rem;
+        font-size: 0.82rem;
         font-weight: 900;
+        letter-spacing: 0;
         text-transform: uppercase;
       }
 
-      .final-names {
+      .bronze-card strong {
         position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
+        display: block;
         margin-top: 18px;
-      }
-
-      .final-chip {
-        display: inline-flex;
-        align-items: center;
-        min-height: 34px;
-        border: 1px solid rgba(255, 214, 128, 0.3);
-        border-radius: 999px;
-        padding: 0 12px;
         color: #ffffff;
-        background: rgba(0, 0, 0, 0.32);
-        font-weight: 800;
+        font-size: 1.35rem;
+        line-height: 1;
       }
 
-      .final-chip.empty {
+      .bronze-label {
+        position: relative;
+        display: block;
+        margin-top: 10px;
         color: var(--muted);
+        font-size: 0.78rem;
+        text-transform: uppercase;
       }
 
       @media (max-width: 980px) {
@@ -279,8 +291,8 @@
           width: 100%;
         }
 
-        .final-contenders {
-          grid-template-columns: 1fr;
+        .bronze-pick-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
     </style>
@@ -298,7 +310,6 @@
           <a href="#leaderboard">Leaderboard</a>
           <a href="#bracket">Bracket</a>
           <a href="#third-place-picks">3rd Picks</a>
-          <a href="#final-chase">Final Chase</a>
         </div>
       </nav>
       <div class="hero-grid" id="top">
@@ -366,13 +377,6 @@
           <button class="update-button" type="button" aria-label="Update 3rd place picks from Google Sheets">UPDATE</button>
         </div>
         <div id="thirdPlaceGrid"></div>
-      </section>
-
-      <section class="section" id="final-chase">
-        <div class="section-head">
-          <div><p class="eyebrow">Sunday final</p><h2>Still alive for the title</h2></div>
-        </div>
-        <div class="final-contenders" id="finalContenders"></div>
       </section>
     </main>
 
