@@ -11,6 +11,15 @@ const sheetUrls = {
 
 const AUTO_REFRESH_MS = 6 * 60 * 60 * 1000;
 
+const teamFlagCodes = {
+  argentina: 'ar',
+  brazil: 'br',
+  canada: 'ca',
+  england: 'gb-eng',
+  france: 'fr',
+  spain: 'es'
+};
+
 async function loadJson(path) {
   const bust = path.includes('?') ? '&' : '?';
   const response = await fetch(path + bust + 'v=' + Date.now(), { cache: 'no-store' });
@@ -92,6 +101,15 @@ function canonicalTeam(team) {
     coteivoire: 'cotedivoire'
   };
   return aliases[cleaned] || cleaned;
+}
+
+function flagCodeForTeam(team) {
+  return teamFlagCodes[canonicalTeam(team)] || '';
+}
+
+function flagStyle(team) {
+  const code = flagCodeForTeam(team);
+  return code ? ' style="--pick-flag: url(' + flagUrl(code) + ');"' : '';
 }
 
 function playersFromHeader(row) {
@@ -268,7 +286,7 @@ function scorePool(pool, results) {
 }
 
 function leaderboardRow(row, index) {
-  return '<tr><td><span class="rank">' + (index + 1) + '</span></td><td><strong>' + row.name + '</strong></td><td><strong>' + row.total + '</strong></td><td>' + row.groupPoints + '</td><td>' + row.roundOf32Points + '</td><td>' + (row.roundOf16Points || 0) + '</td><td>' + (row.quarterfinalPoints || 0) + '</td><td>' + (row.semifinalPoints || 0) + '</td><td>' + (row.finalPoints || 0) + '</td><td><span class="pill">' + row.champion + '</span></td></tr>';
+  return '<tr><td><span class="rank">' + (index + 1) + '</span></td><td><strong>' + row.name + '</strong></td><td><strong>' + row.total + '</strong></td><td>' + row.groupPoints + '</td><td>' + row.roundOf32Points + '</td><td>' + (row.roundOf16Points || 0) + '</td><td>' + (row.quarterfinalPoints || 0) + '</td><td>' + (row.semifinalPoints || 0) + '</td><td>' + (row.finalPoints || 0) + '</td><td><span class="pill champion-pill champion-pill-' + canonicalTeam(row.champion) + '"' + flagStyle(row.champion) + '>' + row.champion + '</span></td></tr>';
 }
 
 function podiumCard(row, index) {
@@ -302,7 +320,7 @@ function thirdPlaceCards(players, picksByPlayer) {
     const pick = cleanTeam((player.picks || [])[0] || '');
     const tone = pick ? canonicalTeam(pick) : 'empty';
     const label = pick || 'No pick submitted';
-    return '<article class="bronze-card bronze-card-' + tone + '"><span class="bronze-player">' + player.name + '</span><strong>' + label + '</strong><span class="bronze-label">3rd place pick</span></article>';
+    return '<article class="bronze-card bronze-card-' + tone + '"' + flagStyle(pick) + '><span class="bronze-player">' + player.name + '</span><strong>' + label + '</strong><span class="bronze-label">3rd place pick</span></article>';
   }).join('');
 
   return '<div class="bronze-pick-grid">' + cards + '</div>';
@@ -321,7 +339,7 @@ function bracketTeam(teamName, match) {
   const name = cleanTeam(teamName || 'TBD');
   const isWinner = match && canonicalTeam(match.winner) === canonicalTeam(name);
   const score = match ? scoreForTeam(match, name) : '';
-  return '<div class="bracket-team ' + (isWinner ? 'winner' : '') + '"><strong>' + name + '</strong><span class="bracket-score">' + score + '</span></div>';
+  return '<div class="bracket-team bracket-team-' + canonicalTeam(name) + ' ' + (isWinner ? 'winner' : '') + '"' + flagStyle(name) + '><strong>' + name + '</strong><span class="bracket-score">' + score + '</span></div>';
 }
 
 function bracketMatch(label, date, teamA, teamB, match) {
