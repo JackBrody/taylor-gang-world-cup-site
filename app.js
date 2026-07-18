@@ -261,15 +261,18 @@ function scorePool(pool, results) {
   const roundOf16Winners = winnersByStage(results, 'Round of 16');
   const quarterfinalWinners = winnersByStage(results, 'Quarterfinals');
   const semifinalWinners = winnersByStage(results, 'Semi-finals');
+  const thirdPlaceWinners = winnersByStage(results, 'Third place play-off');
   const finalWinners = winnersByStage(results, 'Finals');
   const roundOf16ByPlayer = new Map((pool.roundOf16Picks || []).map((player) => [player.name, player.picks || []]));
   const quarterfinalByPlayer = new Map((pool.quarterfinalPicks || []).map((player) => [player.name, player.picks || []]));
   const semifinalByPlayer = new Map((pool.semifinalPicks || []).map((player) => [player.name, player.picks || []]));
+  const thirdPlaceByPlayer = new Map((pool.thirdPlacePicks || []).map((player) => [player.name, player.picks || []]));
 
   const leaderboard = (pool.leaderboard || []).map((row) => {
     const roundOf16Points = pointsForWinners(roundOf16ByPlayer.get(row.name), roundOf16Winners);
     const quarterfinalPoints = pointsForWinners(quarterfinalByPlayer.get(row.name), quarterfinalWinners);
     const semifinalPoints = pointsForWinners(semifinalByPlayer.get(row.name), semifinalWinners);
+    const thirdPlacePoints = pointsForWinners(thirdPlaceByPlayer.get(row.name), thirdPlaceWinners);
     const finalPoints = pointsForWinners([], finalWinners);
 
     return {
@@ -277,8 +280,9 @@ function scorePool(pool, results) {
       roundOf16Points,
       quarterfinalPoints,
       semifinalPoints,
+      thirdPlacePoints,
       finalPoints,
-      total: row.groupPoints + row.roundOf32Points + roundOf16Points + quarterfinalPoints + semifinalPoints + finalPoints
+      total: row.groupPoints + row.roundOf32Points + roundOf16Points + quarterfinalPoints + semifinalPoints + thirdPlacePoints + finalPoints
     };
   }).sort((a, b) => b.total - a.total || b.groupPoints - a.groupPoints || a.name.localeCompare(b.name));
 
@@ -286,7 +290,7 @@ function scorePool(pool, results) {
 }
 
 function leaderboardRow(row, index) {
-  return '<tr><td><span class="rank">' + (index + 1) + '</span></td><td><strong>' + row.name + '</strong></td><td><strong>' + row.total + '</strong></td><td>' + row.groupPoints + '</td><td>' + row.roundOf32Points + '</td><td>' + (row.roundOf16Points || 0) + '</td><td>' + (row.quarterfinalPoints || 0) + '</td><td>' + (row.semifinalPoints || 0) + '</td><td>' + (row.finalPoints || 0) + '</td><td><span class="pill champion-pill champion-pill-' + canonicalTeam(row.champion) + '"' + flagStyle(row.champion) + '>' + row.champion + '</span></td></tr>';
+  return '<tr><td><span class="rank">' + (index + 1) + '</span></td><td><strong>' + row.name + '</strong></td><td><strong>' + row.total + '</strong></td><td>' + row.groupPoints + '</td><td>' + row.roundOf32Points + '</td><td>' + (row.roundOf16Points || 0) + '</td><td>' + (row.quarterfinalPoints || 0) + '</td><td>' + (row.semifinalPoints || 0) + '</td><td>' + (row.thirdPlacePoints || 0) + '</td><td>' + (row.finalPoints || 0) + '</td><td><span class="pill champion-pill champion-pill-' + canonicalTeam(row.champion) + '"' + flagStyle(row.champion) + '>' + row.champion + '</span></td></tr>';
 }
 
 function podiumCard(row, index) {
