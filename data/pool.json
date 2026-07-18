@@ -691,5 +691,39 @@
       "name": "Mila",
       "picks": ["Spain", "Argentina"]
     }
+  ],
+  "thirdPlacePicks": [
+    {
+      "name": "Cory",
+      "picks": ["France"]
+    },
+    {
+      "name": "Meghan",
+      "picks": ["England"]
+    },
+    {
+      "name": "Poppy",
+      "picks": []
+    },
+    {
+      "name": "Kris",
+      "picks": []
+    },
+    {
+      "name": "Wade",
+      "picks": ["France"]
+    },
+    {
+      "name": "Sean",
+      "picks": ["France"]
+    },
+    {
+      "name": "Emma",
+      "picks": ["England"]
+    },
+    {
+      "name": "Mila",
+      "picks": ["England"]
+    }
   ]
 }
