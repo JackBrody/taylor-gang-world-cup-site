@@ -296,19 +296,16 @@ function picksTable(players, picksByPlayer) {
   return '<div class="picks-table-wrap"><table class="picks-table"><thead><tr>' + headers + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
 }
 
-function finalContenders(pool) {
-  const finalists = ['Spain', 'Argentina'];
-  const cards = finalists.map((team) => {
-    const names = (pool.leaderboard || [])
-      .filter((row) => canonicalTeam(row.champion) === canonicalTeam(team))
-      .map((row) => row.name);
-    const body = names.length
-      ? names.map((name) => '<span class="final-chip">' + name + '</span>').join('')
-      : '<span class="final-chip empty">No active picks</span>';
-    return '<article class="final-card"><span class="final-team">' + team + '</span><div class="final-names">' + body + '</div></article>';
+function thirdPlaceCards(players, picksByPlayer) {
+  const picks = picksByPlayer || emptyPicks(players || []);
+  const cards = picks.map((player) => {
+    const pick = cleanTeam((player.picks || [])[0] || '');
+    const tone = pick ? canonicalTeam(pick) : 'empty';
+    const label = pick || 'No pick submitted';
+    return '<article class="bronze-card bronze-card-' + tone + '"><span class="bronze-player">' + player.name + '</span><strong>' + label + '</strong><span class="bronze-label">3rd place pick</span></article>';
   }).join('');
 
-  return cards;
+  return '<div class="bronze-pick-grid">' + cards + '</div>';
 }
 
 function matchKey(teamA, teamB) {
@@ -419,8 +416,7 @@ async function render({ manual = false } = {}) {
     document.querySelector('#matchGrid').innerHTML = latestMatches(results).map(matchCard).join('');
     document.querySelector('#leaderboardRows').innerHTML = pool.leaderboard.map(leaderboardRow).join('');
     document.querySelector('#bracketGrid').innerHTML = buildBracket(results).map(bracketRound).join('');
-    document.querySelector('#thirdPlaceGrid').innerHTML = picksTable(pool.players || [], pool.thirdPlacePicks);
-    document.querySelector('#finalContenders').innerHTML = finalContenders(pool);
+    document.querySelector('#thirdPlaceGrid').innerHTML = thirdPlaceCards(pool.players || [], pool.thirdPlacePicks);
   } finally {
     if (manual) {
       updateButtons.forEach((button) => {
