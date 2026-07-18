@@ -193,6 +193,69 @@
         background: rgba(0, 0, 0, 0.18);
       }
 
+      .final-contenders {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        gap: 16px;
+      }
+
+      .final-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 170px;
+        border: 1px solid rgba(255, 214, 128, 0.42);
+        border-radius: 8px;
+        padding: 20px;
+        background:
+          linear-gradient(145deg, rgba(218, 170, 73, 0.28), rgba(255, 255, 255, 0.07) 44%, rgba(0, 0, 0, 0.32)),
+          rgba(0, 0, 0, 0.26);
+      }
+
+      .final-card::before {
+        content: "FINAL";
+        position: absolute;
+        right: -8px;
+        bottom: -8px;
+        color: rgba(255, 255, 255, 0.08);
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 900;
+        line-height: 0.8;
+        pointer-events: none;
+      }
+
+      .final-team {
+        position: relative;
+        display: block;
+        color: var(--gold);
+        font-size: 1.45rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .final-names {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .final-chip {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        border: 1px solid rgba(255, 214, 128, 0.3);
+        border-radius: 999px;
+        padding: 0 12px;
+        color: #ffffff;
+        background: rgba(0, 0, 0, 0.32);
+        font-weight: 800;
+      }
+
+      .final-chip.empty {
+        color: var(--muted);
+      }
+
       @media (max-width: 980px) {
         .bracket-grid {
           grid-template-columns: repeat(2, minmax(220px, 1fr));
@@ -215,6 +278,10 @@
         .watch-link {
           width: 100%;
         }
+
+        .final-contenders {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -230,7 +297,8 @@
           <a href="#watch">Watch Live</a>
           <a href="#leaderboard">Leaderboard</a>
           <a href="#bracket">Bracket</a>
-          <a href="#semifinal-picks">SF Picks</a>
+          <a href="#third-place-picks">3rd Picks</a>
+          <a href="#final-chase">Final Chase</a>
         </div>
       </nav>
       <div class="hero-grid" id="top">
@@ -292,12 +360,19 @@
         <div class="bracket-grid" id="bracketGrid"></div>
       </section>
 
-      <section class="section alt" id="semifinal-picks">
+      <section class="section alt" id="third-place-picks">
         <div class="section-head">
-          <div><p class="eyebrow">Final four</p><h2>Semi-final picks</h2></div>
-          <button class="update-button" type="button" aria-label="Update semi-final picks from Google Sheets">UPDATE</button>
+          <div><p class="eyebrow">Bronze match</p><h2>3rd place picks</h2></div>
+          <button class="update-button" type="button" aria-label="Update 3rd place picks from Google Sheets">UPDATE</button>
         </div>
-        <div id="semifinalGrid"></div>
+        <div id="thirdPlaceGrid"></div>
+      </section>
+
+      <section class="section" id="final-chase">
+        <div class="section-head">
+          <div><p class="eyebrow">Sunday final</p><h2>Still alive for the title</h2></div>
+        </div>
+        <div class="final-contenders" id="finalContenders"></div>
       </section>
     </main>
 
