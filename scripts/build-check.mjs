@@ -3,7 +3,7 @@ import { access, cp, mkdir, readFile, rm } from 'node:fs/promises';
 const publicFiles = [
   'index.html',
   'styles.css',
-  'app.js',
+  'scoreboard.js',
   'data/pool.json',
   'data/results.json',
 ];
@@ -22,7 +22,7 @@ for (const file of publicFiles) {
   await access(new URL(`../${file}`, import.meta.url));
 }
 
-const textFiles = ['index.html', 'styles.css', 'app.js', 'data/pool.json', 'data/results.json'];
+const textFiles = ['index.html', 'styles.css', 'scoreboard.js', 'data/pool.json', 'data/results.json'];
 for (const file of textFiles) {
   const text = await readFile(new URL(`../${file}`, import.meta.url), 'utf8');
   const hit = privatePatterns.find((pattern) => pattern.test(text));
@@ -43,7 +43,7 @@ await mkdir(new URL('./data/', dist), { recursive: true });
 
 await cp(new URL('../index.html', import.meta.url), new URL('./index.html', dist));
 await cp(new URL('../styles.css', import.meta.url), new URL('./styles.css', dist));
-await cp(new URL('../app.js', import.meta.url), new URL('./app.js', dist));
+await cp(new URL('../scoreboard.js', import.meta.url), new URL('./scoreboard.js', dist));
 await cp(new URL('../data/pool.json', import.meta.url), new URL('./data/pool.json', dist));
 await cp(new URL('../data/results.json', import.meta.url), new URL('./data/results.json', dist));
 
