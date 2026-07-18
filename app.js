@@ -219,7 +219,7 @@ function matchCard(match) {
 }
 
 function latestMatches(results) {
-  return (results.matches || []).filter((match) => !['round of 32', 'round of 16'].includes(String(match.stage || '').toLowerCase()));
+  return (results.matches || []).filter((match) => !['round of 32', 'round of 16', 'quarterfinals'].includes(String(match.stage || '').toLowerCase()));
 }
 
 function winnersByStage(results, stageName) {
@@ -366,7 +366,6 @@ function buildBracket(results) {
   const thirdPlaceMatch = thirdPlaceTeams.includes('TBD') ? null : findMatch(matchMap, thirdPlaceTeams[0], thirdPlaceTeams[1]);
 
   return [
-    { title: 'Quarterfinals', matches: quarterfinals },
     { title: 'Semi-finals', matches: semifinals },
     { title: 'Third place play-off', matches: [{ label: 'Third place play-off', date: 'Sat, Jul 18 5:00 p.m.', teams: thirdPlaceTeams, match: thirdPlaceMatch }] },
     { title: 'Final', matches: [{ label: 'Final', date: 'Sun, Jul 19 3:00 p.m.', teams: finalTeams, match: finalMatch }] }
