@@ -111,12 +111,21 @@
         margin-top: 8px;
         padding: 8px 10px;
         border-radius: 6px;
-        background: rgba(0, 0, 0, 0.22);
+        background:
+          linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.34) 54%, rgba(0, 0, 0, 0.78)),
+          var(--pick-flag),
+          rgba(0, 0, 0, 0.22);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
       }
 
       .bracket-team.winner {
         color: #ffffff;
-        background: linear-gradient(135deg, rgba(218, 170, 73, 0.32), rgba(255, 255, 255, 0.1));
+        background:
+          linear-gradient(90deg, rgba(0, 0, 0, 0.74), rgba(218, 170, 73, 0.34) 52%, rgba(0, 0, 0, 0.74)),
+          var(--pick-flag),
+          linear-gradient(135deg, rgba(218, 170, 73, 0.32), rgba(255, 255, 255, 0.1));
         box-shadow: inset 0 0 0 1px rgba(255, 214, 128, 0.34);
       }
 
@@ -193,6 +202,21 @@
         background: rgba(0, 0, 0, 0.18);
       }
 
+      .champion-pill {
+        overflow: hidden;
+        min-width: 86px;
+        border-color: rgba(255, 214, 128, 0.38);
+        color: #ffffff;
+        background:
+          linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.28) 52%, rgba(0, 0, 0, 0.8)),
+          var(--pick-flag),
+          rgba(0, 0, 0, 0.32);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+      }
+
       .bronze-pick-grid {
         display: grid;
         grid-template-columns: repeat(4, minmax(150px, 1fr));
@@ -207,8 +231,13 @@
         border-radius: 8px;
         padding: 18px;
         background:
+          linear-gradient(135deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.34) 48%, rgba(0, 0, 0, 0.68)),
+          var(--pick-flag),
           linear-gradient(145deg, rgba(218, 170, 73, 0.24), rgba(255, 255, 255, 0.07) 48%, rgba(0, 0, 0, 0.34)),
           rgba(0, 0, 0, 0.26);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
       }
 
@@ -226,12 +255,16 @@
 
       .bronze-card-france {
         background:
+          linear-gradient(135deg, rgba(0, 24, 52, 0.7), rgba(0, 0, 0, 0.22) 46%, rgba(68, 0, 0, 0.66)),
+          var(--pick-flag),
           linear-gradient(145deg, rgba(0, 85, 164, 0.46), rgba(255, 255, 255, 0.08) 48%, rgba(239, 65, 53, 0.28)),
           rgba(0, 0, 0, 0.28);
       }
 
       .bronze-card-england {
         background:
+          linear-gradient(135deg, rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.18) 48%, rgba(68, 0, 0, 0.68)),
+          var(--pick-flag),
           linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(202, 33, 40, 0.36) 48%, rgba(0, 0, 0, 0.34)),
           rgba(0, 0, 0, 0.28);
       }
