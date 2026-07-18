@@ -1,9 +1,9 @@
 {
   "lastUpdated": "2026-07-18",
-  "stage": "Semi-finals",
+  "stage": "Third place play-off",
   "source": {
-    "name": "FIFA World Cup semifinal coverage",
-    "url": "https://www.fifa.com/en/articles/england-argentina-match-report-highlights"
+    "name": "Guardian World Cup third-place coverage",
+    "url": "https://www.theguardian.com/football/live/2026/jul/18/france-v-england-world-cup-third-place-playoff-live"
   },
   "matches": [
     {
@@ -304,6 +304,16 @@
       "teams": [
         { "name": "England", "flag": "gb-eng", "score": 1 },
         { "name": "Argentina", "flag": "ar", "score": 2 }
+      ]
+    },
+    {
+      "date": "2026-07-18",
+      "stage": "Third place play-off",
+      "winner": "England",
+      "scoreline": "5-3",
+      "teams": [
+        { "name": "France", "flag": "fr", "score": 3 },
+        { "name": "England", "flag": "gb-eng", "score": 5 }
       ]
     }
   ]
