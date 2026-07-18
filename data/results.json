@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-07-15",
+  "lastUpdated": "2026-07-18",
   "stage": "Semi-finals",
   "source": {
-    "name": "AP World Cup semifinal coverage",
-    "url": "https://apnews.com/article/87fb7740fa552edf4bfd28d0e8727c23"
+    "name": "FIFA World Cup semifinal coverage",
+    "url": "https://www.fifa.com/en/articles/england-argentina-match-report-highlights"
   },
   "matches": [
     {
@@ -294,6 +294,16 @@
       "teams": [
         { "name": "France", "flag": "fr", "score": 0 },
         { "name": "Spain", "flag": "es", "score": 2 }
+      ]
+    },
+    {
+      "date": "2026-07-15",
+      "stage": "Semi-finals",
+      "winner": "Argentina",
+      "scoreline": "2-1",
+      "teams": [
+        { "name": "England", "flag": "gb-eng", "score": 1 },
+        { "name": "Argentina", "flag": "ar", "score": 2 }
       ]
     }
   ]
