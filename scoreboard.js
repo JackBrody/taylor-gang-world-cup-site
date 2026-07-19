@@ -275,6 +275,10 @@ function pointsForWinners(picks, winners) {
   return winners.reduce((points, winner) => points + (canonicalPicks.has(canonicalTeam(winner)) ? 2 : 0), 0);
 }
 
+function championPickPoints(champion, winners) {
+  return winners.some((winner) => canonicalTeam(winner) === canonicalTeam(champion)) ? 2 : 0;
+}
+
 function scorePool(pool, results) {
   const roundOf16Winners = winnersByStage(results, 'Round of 16');
   const quarterfinalWinners = winnersByStage(results, 'Quarterfinals');
@@ -291,7 +295,7 @@ function scorePool(pool, results) {
     const quarterfinalPoints = pointsForWinners(quarterfinalByPlayer.get(row.name), quarterfinalWinners);
     const semifinalPoints = pointsForWinners(semifinalByPlayer.get(row.name), semifinalWinners);
     const thirdPlacePoints = pointsForWinners(thirdPlaceByPlayer.get(row.name), thirdPlaceWinners);
-    const finalPoints = pointsForWinners([], finalWinners);
+    const finalPoints = championPickPoints(row.champion, finalWinners);
 
     return {
       ...row,
@@ -313,6 +317,119 @@ function leaderboardRow(row, index) {
 
 function podiumCard(row, index) {
   return '<article class="podium-card"><span class="rank">' + (index + 1) + '</span><div><span class="label">' + row.champion + ' champion pick</span><strong>' + row.name + '</strong></div><span class="points">' + row.total + '</span></article>';
+}
+
+function grandWinnerCard(pool, results) {
+  const winner = (pool.leaderboard || [])[0];
+  const finalWinner = winnersByStage(results, 'Finals')[0] || '';
+  if (!winner) return '';
+
+  return '<article class="grand-winner-card"' + flagStyle(finalWinner) + '><div class="grand-symbol" aria-hidden="true">TG</div><div><p class="eyebrow">Fantasy tournament champion</p><h2>' + winner.name + '</h2><p>' + winner.name + ' wins the Taylor Gang World Cup pool with ' + winner.total + ' points.</p></div><div class="grand-score"><span>Final champion</span><strong>' + cleanTeam(finalWinner || winner.champion) + '</strong></div></article>';
+}
+
+function playerPickMap(picksByPlayer) {
+  return new Map((picksByPlayer || []).map((player) => [player.name, player.picks || []]));
+}
+
+function countWinningPick(picks, winner) {
+  return (picks || []).some((pick) => canonicalTeam(pick) === canonicalTeam(winner)) ? 1 : 0;
+}
+
+function pickSupportersFromColumns(players, picksByPlayer, winner) {
+  const byPlayer = playerPickMap(picksByPlayer);
+  return (players || []).filter((name) => countWinningPick(byPlayer.get(name), winner));
+}
+
+function knockoutAccuracy(pool, results) {
+  const players = pool.players || [];
+  const roundOf16Winners = winnersByStage(results, 'Round of 16');
+  const quarterfinalWinners = winnersByStage(results, 'Quarterfinals');
+  const semifinalWinners = winnersByStage(results, 'Semi-finals');
+  const thirdPlaceWinners = winnersByStage(results, 'Third place play-off');
+  const finalWinners = winnersByStage(results, 'Finals');
+  const roundOf16ByPlayer = playerPickMap(pool.roundOf16Picks);
+  const quarterfinalByPlayer = playerPickMap(pool.quarterfinalPicks);
+  const semifinalByPlayer = playerPickMap(pool.semifinalPicks);
+  const thirdPlaceByPlayer = playerPickMap(pool.thirdPlacePicks);
+  const championByPlayer = new Map((pool.leaderboard || []).map((row) => [row.name, row.champion]));
+
+  return players.map((name) => {
+    const correct = [
+      ...roundOf16Winners.map((winner) => countWinningPick(roundOf16ByPlayer.get(name), winner)),
+      ...quarterfinalWinners.map((winner) => countWinningPick(quarterfinalByPlayer.get(name), winner)),
+      ...semifinalWinners.map((winner) => countWinningPick(semifinalByPlayer.get(name), winner)),
+      ...thirdPlaceWinners.map((winner) => countWinningPick(thirdPlaceByPlayer.get(name), winner)),
+      ...finalWinners.map((winner) => canonicalTeam(championByPlayer.get(name)) === canonicalTeam(winner) ? 1 : 0)
+    ].reduce((sum, value) => sum + value, 0);
+
+    return { name, correct };
+  }).sort((a, b) => b.correct - a.correct || a.name.localeCompare(b.name));
+}
+
+function rareWinningPicks(pool, results) {
+  const players = pool.players || [];
+  const rare = [];
+
+  (results.matches || [])
+    .filter((match) => String(match.stage || '').toLowerCase() === 'round of 32')
+    .forEach((match) => {
+      const fixture = (pool.roundOf32Picks || []).find((pick) => matchKey(pick.home, pick.away) === matchKey(match.teams[0].name, match.teams[1].name));
+      if (!fixture) return;
+      const supporters = players.filter((name) => canonicalTeam(fixture.picks[name]) === canonicalTeam(match.winner));
+      rare.push({ stage: 'Round of 32', winner: match.winner, match: match.teams[0].name + ' vs ' + match.teams[1].name, supporters });
+    });
+
+  [
+    { stage: 'Round of 16', winners: winnersByStage(results, 'Round of 16'), picks: pool.roundOf16Picks },
+    { stage: 'Quarterfinals', winners: winnersByStage(results, 'Quarterfinals'), picks: pool.quarterfinalPicks },
+    { stage: 'Semi-finals', winners: winnersByStage(results, 'Semi-finals'), picks: pool.semifinalPicks },
+    { stage: 'Third place', winners: winnersByStage(results, 'Third place play-off'), picks: pool.thirdPlacePicks }
+  ].forEach((stage) => {
+    stage.winners.forEach((winner) => {
+      rare.push({ stage: stage.stage, winner, match: winner + ' winner pick', supporters: pickSupportersFromColumns(players, stage.picks, winner) });
+    });
+  });
+
+  winnersByStage(results, 'Finals').forEach((winner) => {
+    const supporters = (pool.leaderboard || []).filter((row) => canonicalTeam(row.champion) === canonicalTeam(winner)).map((row) => row.name);
+    rare.push({ stage: 'Finals', winner, match: winner + ' champion pick', supporters });
+  });
+
+  return rare
+    .filter((entry) => entry.supporters.length > 0)
+    .sort((a, b) => a.supporters.length - b.supporters.length || a.stage.localeCompare(b.stage))
+    .slice(0, 4);
+}
+
+function stageLeaders(pool) {
+  const stages = [
+    { key: 'groupPoints', label: 'Groups' },
+    { key: 'roundOf32Points', label: 'Round of 32' },
+    { key: 'roundOf16Points', label: 'Round of 16' },
+    { key: 'quarterfinalPoints', label: 'Quarterfinals' },
+    { key: 'semifinalPoints', label: 'Semi-finals' },
+    { key: 'thirdPlacePoints', label: '3rd place' },
+    { key: 'finalPoints', label: 'Finals' }
+  ];
+
+  return stages.map((stage) => {
+    const max = Math.max(...(pool.leaderboard || []).map((row) => row[stage.key] || 0));
+    const leaders = (pool.leaderboard || []).filter((row) => (row[stage.key] || 0) === max).map((row) => row.name);
+    return { ...stage, max, leaders };
+  }).filter((stage) => stage.max > 0);
+}
+
+function statsBreakdown(pool, results) {
+  const accuracy = knockoutAccuracy(pool, results);
+  const rare = rareWinningPicks(pool, results);
+  const leaders = stageLeaders(pool);
+  const topAccuracy = accuracy[0];
+
+  const rareCards = rare.map((entry) => '<article class="stat-card rare-card"' + flagStyle(entry.winner) + '><span>' + entry.stage + '</span><strong>' + cleanTeam(entry.winner) + '</strong><p>' + entry.supporters.length + ' correct: ' + entry.supporters.join(', ') + '</p></article>').join('');
+  const leaderRows = leaders.map((stage) => '<div><strong>' + stage.label + '</strong><span>' + stage.leaders.join(', ') + ' - ' + stage.max + '</span></div>').join('');
+  const accuracyRows = accuracy.slice(0, 4).map((row, index) => '<div><strong>' + (index + 1) + '. ' + row.name + '</strong><span>' + row.correct + ' correct winning picks</span></div>').join('');
+
+  return '<div class="stats-grid"><article class="stat-card"><span>Most accurate picks</span><strong>' + topAccuracy.name + '</strong><p>' + topAccuracy.correct + ' knockout and champion winners called correctly.</p></article><article class="stat-card stat-list"><span>Accuracy board</span>' + accuracyRows + '</article><article class="stat-card stat-list"><span>Stage bosses</span>' + leaderRows + '</article></div><div class="rare-grid">' + rareCards + '</div>';
 }
 
 function pickCard(player, label) {
@@ -452,6 +569,8 @@ async function render({ manual = false } = {}) {
     document.querySelector('#stageName').textContent = results.stage;
     document.querySelector('#sourceLink').href = results.source.url;
     document.querySelector('#sourceLink').textContent = results.source.name;
+    document.querySelector('#grandWinner').innerHTML = grandWinnerCard(pool, results);
+    document.querySelector('#statsGrid').innerHTML = statsBreakdown(pool, results);
     document.querySelector('#podium').innerHTML = pool.leaderboard.slice(0, 3).map(podiumCard).join('');
     document.querySelector('#matchGrid').innerHTML = latestMatches(results).map(matchCard).join('');
     document.querySelector('#leaderboardRows').innerHTML = pool.leaderboard.map(leaderboardRow).join('');
