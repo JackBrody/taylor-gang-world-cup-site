@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-07-18",
-  "stage": "Third place play-off",
+  "lastUpdated": "2026-07-19",
+  "stage": "Final",
   "source": {
-    "name": "Guardian World Cup third-place coverage",
-    "url": "https://www.theguardian.com/football/live/2026/jul/18/france-v-england-world-cup-third-place-playoff-live"
+    "name": "FIFA World Cup final coverage",
+    "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
   },
   "matches": [
     {
@@ -314,6 +314,16 @@
       "teams": [
         { "name": "France", "flag": "fr", "score": 3 },
         { "name": "England", "flag": "gb-eng", "score": 5 }
+      ]
+    },
+    {
+      "date": "2026-07-19",
+      "stage": "Finals",
+      "winner": "Spain",
+      "scoreline": "1-0 aet",
+      "teams": [
+        { "name": "Spain", "flag": "es", "score": 1 },
+        { "name": "Argentina", "flag": "ar", "score": 0 }
       ]
     }
   ]
