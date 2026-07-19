@@ -276,7 +276,7 @@ function pointsForWinners(picks, winners) {
 }
 
 function championPickPoints(champion, winners) {
-  return winners.some((winner) => canonicalTeam(winner) === canonicalTeam(champion)) ? 2 : 0;
+  return winners.some((winner) => canonicalTeam(winner) === canonicalTeam(champion)) ? 10 : 0;
 }
 
 function scorePool(pool, results) {
