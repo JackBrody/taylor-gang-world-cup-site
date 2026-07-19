@@ -476,6 +476,42 @@
         text-transform: uppercase;
       }
 
+      .closing-note {
+        border-top: 1px solid rgba(255, 214, 128, 0.26);
+        border-bottom: 1px solid rgba(255, 214, 128, 0.18);
+        background:
+          linear-gradient(135deg, rgba(218, 170, 73, 0.14), rgba(255, 255, 255, 0.05) 44%, rgba(0, 0, 0, 0.26)),
+          rgba(255, 255, 255, 0.04);
+      }
+
+      .closing-note-card {
+        max-width: 880px;
+        margin: 0 auto;
+        border: 1px solid rgba(255, 214, 128, 0.34);
+        border-radius: 8px;
+        padding: clamp(20px, 4vw, 34px);
+        background:
+          linear-gradient(145deg, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.28)),
+          rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+      }
+
+      .closing-note-card h2 {
+        margin: 0 0 14px;
+        color: var(--gold);
+      }
+
+      .closing-note-card p {
+        margin: 12px 0 0;
+        color: #f5f1e7;
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+
+      .closing-note-card strong {
+        color: #ffffff;
+      }
+
       @media (max-width: 980px) {
         .bracket-grid {
           grid-template-columns: repeat(2, minmax(220px, 1fr));
@@ -529,6 +565,7 @@
           <a href="#leaderboard">Leaderboard</a>
           <a href="#bracket">Bracket</a>
           <a href="#third-place-picks">3rd Picks</a>
+          <a href="#closing-note">Closing Note</a>
         </div>
       </nav>
       <div class="hero-grid" id="top">
@@ -605,6 +642,17 @@
           <button class="update-button" type="button" aria-label="Update 3rd place picks from Google Sheets">UPDATE</button>
         </div>
         <div id="thirdPlaceGrid"></div>
+      </section>
+
+      <section class="section closing-note" id="closing-note">
+        <article class="closing-note-card">
+          <p class="eyebrow">One last word</p>
+          <h2>Thank you, Taylor Gang</h2>
+          <p>As another incredible Taylor Gang Pool comes to a close, I want to say a sincere <strong>thank you</strong> to everyone who took part.</p>
+          <p>Whether you finished at the top of the table or near the bottom, your predictions, friendly competition, and banter made the tournament much more enjoyable. It was great seeing everyone checking scores, cheering on their picks, and watching the standings change after every match.</p>
+          <p>Congratulations to <strong>ME!!! 😁</strong>, and thank you to everyone who stuck with it from the opening match all the way to the Final.</p>
+          <p>I hope you all enjoyed the tournament as much as I enjoyed putting this pool and website together. Here's to another great Taylor Gang Pool. See you in four years!</p>
+        </article>
       </section>
     </main>
 
